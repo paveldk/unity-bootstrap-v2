@@ -1,0 +1,3078 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UniRx</name>
+    </assembly>
+    <members>
+        <member name="M:UniRx.CompositeDisposable.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Reactive.Disposables.CompositeDisposable"/> class with no disposables contained by it initially.
+            </summary>
+        </member>
+        <member name="M:UniRx.CompositeDisposable.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Reactive.Disposables.CompositeDisposable"/> class with the specified number of disposables.
+            </summary>
+            <param name="capacity">The number of disposables that the new CompositeDisposable can initially store.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="capacity"/> is less than zero.</exception>
+        </member>
+        <member name="M:UniRx.CompositeDisposable.#ctor(System.IDisposable[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Reactive.Disposables.CompositeDisposable"/> class from a group of disposables.
+            </summary>
+            <param name="disposables">Disposables that will be disposed together.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="disposables"/> is null.</exception>
+        </member>
+        <member name="M:UniRx.CompositeDisposable.#ctor(System.Collections.Generic.IEnumerable{System.IDisposable})">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Reactive.Disposables.CompositeDisposable"/> class from a group of disposables.
+            </summary>
+            <param name="disposables">Disposables that will be disposed together.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="disposables"/> is null.</exception>
+        </member>
+        <member name="P:UniRx.CompositeDisposable.Count">
+            <summary>
+            Gets the number of disposables contained in the CompositeDisposable.
+            </summary>
+        </member>
+        <member name="M:UniRx.CompositeDisposable.Add(System.IDisposable)">
+            <summary>
+            Adds a disposable to the CompositeDisposable or disposes the disposable if the CompositeDisposable is disposed.
+            </summary>
+            <param name="item">Disposable to add.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="item"/> is null.</exception>
+        </member>
+        <member name="M:UniRx.CompositeDisposable.Remove(System.IDisposable)">
+            <summary>
+            Removes and disposes the first occurrence of a disposable from the CompositeDisposable.
+            </summary>
+            <param name="item">Disposable to remove.</param>
+            <returns>true if found; false otherwise.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="item"/> is null.</exception>
+        </member>
+        <member name="M:UniRx.CompositeDisposable.Dispose">
+            <summary>
+            Disposes all disposables in the group and removes them from the group.
+            </summary>
+        </member>
+        <member name="M:UniRx.CompositeDisposable.Clear">
+            <summary>
+            Removes and disposes all disposables from the CompositeDisposable, but does not dispose the CompositeDisposable.
+            </summary>
+        </member>
+        <member name="M:UniRx.CompositeDisposable.Contains(System.IDisposable)">
+            <summary>
+            Determines whether the CompositeDisposable contains a specific disposable.
+            </summary>
+            <param name="item">Disposable to search for.</param>
+            <returns>true if the disposable was found; otherwise, false.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="item"/> is null.</exception>
+        </member>
+        <member name="M:UniRx.CompositeDisposable.CopyTo(System.IDisposable[],System.Int32)">
+            <summary>
+            Copies the disposables contained in the CompositeDisposable to an array, starting at a particular array index.
+            </summary>
+            <param name="array">Array to copy the contained disposables to.</param>
+            <param name="arrayIndex">Target index at which to copy the first disposable of the group.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="array"/> is null.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="arrayIndex"/> is less than zero. -or - <paramref name="arrayIndex"/> is larger than or equal to the array length.</exception>
+        </member>
+        <member name="P:UniRx.CompositeDisposable.IsReadOnly">
+            <summary>
+            Always returns false.
+            </summary>
+        </member>
+        <member name="M:UniRx.CompositeDisposable.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the CompositeDisposable.
+            </summary>
+            <returns>An enumerator to iterate over the disposables.</returns>
+        </member>
+        <member name="M:UniRx.CompositeDisposable.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the CompositeDisposable.
+            </summary>
+            <returns>An enumerator to iterate over the disposables.</returns>
+        </member>
+        <member name="P:UniRx.CompositeDisposable.IsDisposed">
+            <summary>
+            Gets a value that indicates whether the object is disposed.
+            </summary>
+        </member>
+        <member name="M:UniRx.DisposableExtensions.AddTo``1(``0,System.Collections.Generic.ICollection{System.IDisposable})">
+            <summary>Add disposable(self) to CompositeDisposable(or other ICollection). Return value is self disposable.</summary>
+        </member>
+        <member name="M:UniRx.DisposableExtensions.AddTo``1(``0,UnityEngine.GameObject)">
+            <summary>Dispose self on target gameObject has been destroyed. Return value is self disposable.</summary>
+        </member>
+        <member name="M:UniRx.DisposableExtensions.AddTo``1(``0,UnityEngine.Component)">
+            <summary>Dispose self on target gameObject has been destroyed. Return value is self disposable.</summary>
+        </member>
+        <member name="M:UniRx.DisposableExtensions.AddTo``1(``0,System.Collections.Generic.ICollection{System.IDisposable},UnityEngine.GameObject)">
+            <summary>
+            <para>Add disposable(self) to CompositeDisposable(or other ICollection) and Dispose self on target gameObject has been destroyed.</para>
+            <para>Return value is self disposable.</para>
+            </summary>
+        </member>
+        <member name="M:UniRx.DisposableExtensions.AddTo``1(``0,System.Collections.Generic.ICollection{System.IDisposable},UnityEngine.Component)">
+            <summary>
+            <para>Add disposable(self) to CompositeDisposable(or other ICollection) and Dispose self on target gameObject has been destroyed.</para>
+            <para>Return value is self disposable.</para>
+            </summary>
+        </member>
+        <member name="T:UniRx.RefCountDisposable">
+            <summary>
+            Represents a disposable resource that only disposes its underlying disposable resource when all <see cref="M:UniRx.RefCountDisposable.GetDisposable">dependent disposable objects</see> have been disposed.
+            </summary>
+        </member>
+        <member name="M:UniRx.RefCountDisposable.#ctor(System.IDisposable)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Reactive.Disposables.RefCountDisposable"/> class with the specified disposable.
+            </summary>
+            <param name="disposable">Underlying disposable.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="disposable"/> is null.</exception>
+        </member>
+        <member name="P:UniRx.RefCountDisposable.IsDisposed">
+            <summary>
+            Gets a value that indicates whether the object is disposed.
+            </summary>
+        </member>
+        <member name="M:UniRx.RefCountDisposable.GetDisposable">
+            <summary>
+            Returns a dependent disposable that when disposed decreases the refcount on the underlying disposable.
+            </summary>
+            <returns>A dependent disposable contributing to the reference count that manages the underlying disposable's lifetime.</returns>
+        </member>
+        <member name="M:UniRx.RefCountDisposable.Dispose">
+            <summary>
+            Disposes the underlying disposable only when all dependent disposables have been disposed.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.Share``1(UniRx.IObservable{``0})">
+            <summary>
+            same as Publish().RefCount()
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.WhenAll``1(UniRx.IObservable{``0}[])">
+            <summary>
+            <para>Specialized for single async operations like Task.WhenAll, Zip.Take(1).</para>
+            <para>If sequence is empty, return T[0] array.</para>
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.WhenAll(UniRx.IObservable{UniRx.Unit}[])">
+            <summary>
+            <para>Specialized for single async operations like Task.WhenAll, Zip.Take(1).</para>
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.WhenAll``1(System.Collections.Generic.IEnumerable{UniRx.IObservable{``0}})">
+            <summary>
+            <para>Specialized for single async operations like Task.WhenAll, Zip.Take(1).</para>
+            <para>If sequence is empty, return T[0] array.</para>
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.WhenAll(System.Collections.Generic.IEnumerable{UniRx.IObservable{UniRx.Unit}})">
+            <summary>
+            <para>Specialized for single async operations like Task.WhenAll, Zip.Take(1).</para>
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.Cast``2(UniRx.IObservable{``0},``1)">
+            <summary>
+            witness is for type inference.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.OfType``2(UniRx.IObservable{``0},``1)">
+            <summary>
+            witness is for type inference.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.AsUnitObservable``1(UniRx.IObservable{``0})">
+            <summary>
+            Converting .Select(_ => Unit.Default) sequence.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.AsSingleUnitObservable``1(UniRx.IObservable{``0})">
+            <summary>
+            Same as LastOrDefault().AsUnitObservable().
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.Create``1(System.Func{UniRx.IObserver{``0},System.IDisposable})">
+            <summary>
+            Create anonymous observable. Observer has exception durability. This is recommended for make operator and event like generator. 
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.Create``1(System.Func{UniRx.IObserver{``0},System.IDisposable},System.Boolean)">
+            <summary>
+            Create anonymous observable. Observer has exception durability. This is recommended for make operator and event like generator(HotObservable). 
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.CreateWithState``2(``1,System.Func{``1,UniRx.IObserver{``0},System.IDisposable})">
+            <summary>
+            Create anonymous observable. Observer has exception durability. This is recommended for make operator and event like generator. 
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.CreateWithState``2(``1,System.Func{``1,UniRx.IObserver{``0},System.IDisposable},System.Boolean)">
+            <summary>
+            Create anonymous observable. Observer has exception durability. This is recommended for make operator and event like generator(HotObservable). 
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.CreateSafe``1(System.Func{UniRx.IObserver{``0},System.IDisposable})">
+            <summary>
+            Create anonymous observable. Safe means auto detach when error raised in onNext pipeline. This is recommended for make generator (ColdObservable).
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.CreateSafe``1(System.Func{UniRx.IObserver{``0},System.IDisposable},System.Boolean)">
+            <summary>
+            Create anonymous observable. Safe means auto detach when error raised in onNext pipeline. This is recommended for make generator (ColdObservable).
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.Empty``1">
+            <summary>
+            Empty Observable. Returns only OnCompleted.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.Empty``1(UniRx.IScheduler)">
+            <summary>
+            Empty Observable. Returns only OnCompleted on specified scheduler.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.Empty``1(``0)">
+            <summary>
+            Empty Observable. Returns only OnCompleted. witness is for type inference.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.Empty``1(UniRx.IScheduler,``0)">
+            <summary>
+            Empty Observable. Returns only OnCompleted on specified scheduler. witness is for type inference.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.Never``1">
+            <summary>
+            Non-Terminating Observable. It's no returns, never finish.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.Never``1(``0)">
+            <summary>
+            Non-Terminating Observable. It's no returns, never finish. witness is for type inference.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.Return``1(``0)">
+            <summary>
+            Return single sequence Immediately.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.Return``1(``0,UniRx.IScheduler)">
+            <summary>
+            Return single sequence on specified scheduler.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.Return(UniRx.Unit)">
+            <summary>
+            Return single sequence Immediately, optimized for Unit(no allocate memory).
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.Return(System.Boolean)">
+            <summary>
+            Return single sequence Immediately, optimized for Boolean(no allocate memory).
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.Return(System.Int32)">
+            <summary>
+            Return single sequence Immediately, optimized for Int32.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.ReturnUnit">
+            <summary>
+            Same as Observable.Return(Unit.Default); but no allocate memory.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.Throw``1(System.Exception)">
+            <summary>
+            Empty Observable. Returns only onError.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.Throw``1(System.Exception,``0)">
+            <summary>
+            Empty Observable. Returns only onError. witness if for Type inference.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.Throw``1(System.Exception,UniRx.IScheduler)">
+            <summary>
+            Empty Observable. Returns only onError on specified scheduler.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.Throw``1(System.Exception,UniRx.IScheduler,``0)">
+            <summary>
+            Empty Observable. Returns only onError on specified scheduler. witness if for Type inference.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.RepeatSafe``1(UniRx.IObservable{``0})">
+            <summary>
+            Same as Repeat() but if arriving contiguous "OnComplete" Repeat stops.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.ContinueWith``2(UniRx.IObservable{``0},UniRx.IObservable{``1})">
+            <summary>
+            Lightweight SelectMany for Single Async Operation.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.ContinueWith``2(UniRx.IObservable{``0},System.Func{``0,UniRx.IObservable{``1}})">
+            <summary>
+            Lightweight SelectMany for Single Async Operation.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.CatchIgnore``1(UniRx.IObservable{``0})">
+            <summary>Catch exception and return Observable.Empty.</summary>
+        </member>
+        <member name="M:UniRx.Observable.CatchIgnore``2(UniRx.IObservable{``0},System.Action{``1})">
+            <summary>Catch exception and return Observable.Empty.</summary>
+        </member>
+        <member name="M:UniRx.Observable.OnErrorRetry``1(UniRx.IObservable{``0})">
+            <summary>
+            <para>Repeats the source observable sequence until it successfully terminates.</para>
+            <para>This is same as Retry().</para>
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.OnErrorRetry``2(UniRx.IObservable{``0},System.Action{``1})">
+            <summary>
+            When catched exception, do onError action and repeat observable sequence.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.OnErrorRetry``2(UniRx.IObservable{``0},System.Action{``1},System.TimeSpan)">
+            <summary>
+            When catched exception, do onError action and repeat observable sequence after delay time.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.OnErrorRetry``2(UniRx.IObservable{``0},System.Action{``1},System.Int32)">
+            <summary>
+            When catched exception, do onError action and repeat observable sequence during within retryCount.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.OnErrorRetry``2(UniRx.IObservable{``0},System.Action{``1},System.Int32,System.TimeSpan)">
+            <summary>
+            When catched exception, do onError action and repeat observable sequence after delay time during within retryCount.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.OnErrorRetry``2(UniRx.IObservable{``0},System.Action{``1},System.Int32,System.TimeSpan,UniRx.IScheduler)">
+            <summary>
+            When catched exception, do onError action and repeat observable sequence after delay time(work on delayScheduler) during within retryCount.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.Pairwise``1(UniRx.IObservable{``0})">
+            <summary>Projects old and new element of a sequence into a new form.</summary>
+        </member>
+        <member name="M:UniRx.Observable.Pairwise``2(UniRx.IObservable{``0},System.Func{``0,``0,``1})">
+            <summary>Projects old and new element of a sequence into a new form.</summary>
+        </member>
+        <member name="M:UniRx.Observable.FromCoroutine(System.Func{System.Collections.IEnumerator},System.Boolean)">
+            <summary>From has no callback coroutine to IObservable. If publishEveryYield = true then publish OnNext every yield return else return once on enumeration completed.</summary>
+        </member>
+        <member name="M:UniRx.Observable.FromCoroutine(System.Func{UniRx.CancellationToken,System.Collections.IEnumerator},System.Boolean)">
+            <summary>From has no callback coroutine to IObservable. If publishEveryYield = true then publish OnNext every yield return else return once on enumeration completed.</summary>
+        </member>
+        <member name="M:UniRx.Observable.FromMicroCoroutine(System.Func{System.Collections.IEnumerator},System.Boolean,UniRx.FrameCountType)">
+            <summary>
+            MicroCoroutine is lightweight, fast coroutine dispatcher.
+            IEnumerator supports only yield return null.
+            If publishEveryYield = true then publish OnNext every yield return else return once on enumeration completed.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.FromMicroCoroutine(System.Func{UniRx.CancellationToken,System.Collections.IEnumerator},System.Boolean,UniRx.FrameCountType)">
+            <summary>
+            MicroCoroutine is lightweight, fast coroutine dispatcher.
+            IEnumerator supports only yield return null.
+            If publishEveryYield = true then publish OnNext every yield return else return once on enumeration completed.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.FromCoroutineValue``1(System.Func{System.Collections.IEnumerator},System.Boolean)">
+            <summary>Convert coroutine to typed IObservable. If nullAsNextUpdate = true then yield return null when Enumerator.Current and no null publish observer.OnNext.</summary>
+        </member>
+        <member name="M:UniRx.Observable.FromCoroutineValue``1(System.Func{UniRx.CancellationToken,System.Collections.IEnumerator},System.Boolean)">
+            <summary>Convert coroutine to typed IObservable. If nullAsNextUpdate = true then yield return null when Enumerator.Current and no null publish observer.OnNext.</summary>
+        </member>
+        <member name="M:UniRx.Observable.FromMicroCoroutine``1(System.Func{UniRx.IObserver{``0},System.Collections.IEnumerator},UniRx.FrameCountType)">
+            <summary>
+            MicroCoroutine is lightweight, fast coroutine dispatcher.
+            IEnumerator supports only yield return null.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.FromMicroCoroutine``1(System.Func{UniRx.IObserver{``0},UniRx.CancellationToken,System.Collections.IEnumerator},UniRx.FrameCountType)">
+            <summary>
+            MicroCoroutine is lightweight, fast coroutine dispatcher.
+            IEnumerator supports only yield return null.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.SelectMany``1(UniRx.IObservable{``0},System.Func{``0,System.Collections.IEnumerator})">
+            <summary>
+            Note: publishEveryYield is always false. If you want to set true, use Observable.FromCoroutine(() => selector(x), true). This is workaround of Unity compiler's bug.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.EveryUpdate">
+            <summary>
+            EveryUpdate calls coroutine's yield return null timing. It is after all Update and before LateUpdate.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.EveryGameObjectUpdate">
+            <summary>
+            EveryGameObjectUpdate calls from MainThreadDispatcher's Update.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.EveryLateUpdate">
+            <summary>
+            EveryLateUpdate calls from MainThreadDispatcher's OnLateUpdate.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.EveryAfterUpdate">
+            <summary>
+            [Obsolete]Same as EveryUpdate.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.ToYieldInstruction``1(UniRx.IObservable{``0})">
+            <summary>
+            Convert to yieldable IEnumerator. e.g. yield return source.ToYieldInstruction();.
+            If needs last result, you can take ObservableYieldInstruction.HasResult/Result property.
+            This overload throws exception if received OnError events(same as coroutine).
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.ToYieldInstruction``1(UniRx.IObservable{``0},UniRx.CancellationToken)">
+            <summary>
+            Convert to yieldable IEnumerator. e.g. yield return source.ToYieldInstruction();.
+            If needs last result, you can take ObservableYieldInstruction.HasResult/Result property.
+            This overload throws exception if received OnError events(same as coroutine).
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.ToYieldInstruction``1(UniRx.IObservable{``0},System.Boolean)">
+            <summary>
+            Convert to yieldable IEnumerator. e.g. yield return source.ToYieldInstruction();.
+            If needs last result, you can take ObservableYieldInstruction.HasResult/Result property.
+            If throwOnError = false, you can take ObservableYieldInstruction.HasError/Error property.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.ToYieldInstruction``1(UniRx.IObservable{``0},System.Boolean,UniRx.CancellationToken)">
+            <summary>
+            Convert to yieldable IEnumerator. e.g. yield return source.ToYieldInstruction();.
+            If needs last result, you can take ObservableYieldInstruction.HasResult/Result property.
+            If throwOnError = false, you can take ObservableYieldInstruction.HasError/Error property.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.ToAwaitableEnumerator``1(UniRx.IObservable{``0},UniRx.CancellationToken)">
+            <summary>Convert to awaitable IEnumerator.</summary>
+        </member>
+        <member name="M:UniRx.Observable.ToAwaitableEnumerator``1(UniRx.IObservable{``0},System.Action{``0},UniRx.CancellationToken)">
+            <summary>Convert to awaitable IEnumerator.</summary>
+        </member>
+        <member name="M:UniRx.Observable.ToAwaitableEnumerator``1(UniRx.IObservable{``0},System.Action{System.Exception},UniRx.CancellationToken)">
+            <summary>Convert to awaitable IEnumerator.</summary>
+        </member>
+        <member name="M:UniRx.Observable.ToAwaitableEnumerator``1(UniRx.IObservable{``0},System.Action{``0},System.Action{System.Exception},UniRx.CancellationToken)">
+            <summary>Convert to awaitable IEnumerator.</summary>
+        </member>
+        <member name="M:UniRx.Observable.StartAsCoroutine``1(UniRx.IObservable{``0},UniRx.CancellationToken)">
+            <summary>AutoStart observable as coroutine.</summary>
+        </member>
+        <member name="M:UniRx.Observable.StartAsCoroutine``1(UniRx.IObservable{``0},System.Action{``0},UniRx.CancellationToken)">
+            <summary>AutoStart observable as coroutine.</summary>
+        </member>
+        <member name="M:UniRx.Observable.StartAsCoroutine``1(UniRx.IObservable{``0},System.Action{System.Exception},UniRx.CancellationToken)">
+            <summary>AutoStart observable as coroutine.</summary>
+        </member>
+        <member name="M:UniRx.Observable.StartAsCoroutine``1(UniRx.IObservable{``0},System.Action{``0},System.Action{System.Exception},UniRx.CancellationToken)">
+            <summary>AutoStart observable as coroutine.</summary>
+        </member>
+        <member name="M:UniRx.Observable.OnceApplicationQuit">
+            <summary>publish OnNext(Unit) and OnCompleted() on application quit.</summary>
+        </member>
+        <member name="M:UniRx.Observable.BatchFrame``1(UniRx.IObservable{``0})">
+            <summary>
+            Buffer elements in during target frame counts. Default raise same frame of end(frameCount = 0, frameCountType = EndOfFrame).
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.BatchFrame``1(UniRx.IObservable{``0},System.Int32,UniRx.FrameCountType)">
+            <summary>
+            Buffer elements in during target frame counts.
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.BatchFrame(UniRx.IObservable{UniRx.Unit})">
+            <summary>
+            Wait command in during target frame counts. Default raise same frame of end(frameCount = 0, frameCountType = EndOfFrame).
+            </summary>
+        </member>
+        <member name="M:UniRx.Observable.BatchFrame(UniRx.IObservable{UniRx.Unit},System.Int32,UniRx.FrameCountType)">
+            <summary>
+            Wait command in during target frame counts.
+            </summary>
+        </member>
+        <member name="T:UniRx.StableCompositeDisposable">
+            <summary>
+            Represents a group of disposable resources that are disposed together.
+            </summary>
+        </member>
+        <member name="M:UniRx.StableCompositeDisposable.Create(System.IDisposable,System.IDisposable)">
+            <summary>
+            Creates a new group containing two disposable resources that are disposed together.
+            </summary>
+            <param name="disposable1">The first disposable resoruce to add to the group.</param>
+            <param name="disposable2">The second disposable resoruce to add to the group.</param>
+            <returns>Group of disposable resources that are disposed together.</returns>
+        </member>
+        <member name="M:UniRx.StableCompositeDisposable.Create(System.IDisposable,System.IDisposable,System.IDisposable)">
+            <summary>
+            Creates a new group containing three disposable resources that are disposed together.
+            </summary>
+            <param name="disposable1">The first disposable resoruce to add to the group.</param>
+            <param name="disposable2">The second disposable resoruce to add to the group.</param>
+            <param name="disposable3">The third disposable resoruce to add to the group.</param>
+            <returns>Group of disposable resources that are disposed together.</returns>
+        </member>
+        <member name="M:UniRx.StableCompositeDisposable.Create(System.IDisposable,System.IDisposable,System.IDisposable,System.IDisposable)">
+            <summary>
+            Creates a new group containing four disposable resources that are disposed together.
+            </summary>
+            <param name="disposable1">The first disposable resoruce to add to the group.</param>
+            <param name="disposable2">The second disposable resoruce to add to the group.</param>
+            <param name="disposable3">The three disposable resoruce to add to the group.</param>
+            <param name="disposable4">The four disposable resoruce to add to the group.</param>
+            <returns>Group of disposable resources that are disposed together.</returns>
+        </member>
+        <member name="M:UniRx.StableCompositeDisposable.Create(System.IDisposable[])">
+            <summary>
+            Creates a new group of disposable resources that are disposed together.
+            </summary>
+            <param name="disposables">Disposable resources to add to the group.</param>
+            <returns>Group of disposable resources that are disposed together.</returns>
+        </member>
+        <member name="M:UniRx.StableCompositeDisposable.CreateUnsafe(System.IDisposable[])">
+            <summary>
+            Creates a new group of disposable resources that are disposed together. Array is not copied, it's unsafe but optimized.
+            </summary>
+            <param name="disposables">Disposable resources to add to the group.</param>
+            <returns>Group of disposable resources that are disposed together.</returns>
+        </member>
+        <member name="M:UniRx.StableCompositeDisposable.Create(System.Collections.Generic.IEnumerable{System.IDisposable})">
+            <summary>
+            Creates a new group of disposable resources that are disposed together.
+            </summary>
+            <param name="disposables">Disposable resources to add to the group.</param>
+            <returns>Group of disposable resources that are disposed together.</returns>
+        </member>
+        <member name="M:UniRx.StableCompositeDisposable.Dispose">
+            <summary>
+            Disposes all disposables in the group.
+            </summary>
+        </member>
+        <member name="P:UniRx.StableCompositeDisposable.IsDisposed">
+            <summary>
+            Gets a value that indicates whether the object is disposed.
+            </summary>
+        </member>
+        <member name="T:UniRx.IEventPattern`2">
+            <summary>
+            Represents a .NET event invocation consisting of the strongly typed object that raised the event and the data that was generated by the event.
+            </summary>
+            <typeparam name="TSender">
+            The type of the sender that raised the event.
+            This type parameter is covariant. That is, you can use either the type you specified or any type that is more derived. For more information about covariance and contravariance, see Covariance and Contravariance in Generics.
+            </typeparam>
+            <typeparam name="TEventArgs">
+            The type of the event data generated by the event.
+            This type parameter is covariant. That is, you can use either the type you specified or any type that is more derived. For more information about covariance and contravariance, see Covariance and Contravariance in Generics.
+            </typeparam>
+        </member>
+        <member name="P:UniRx.IEventPattern`2.Sender">
+            <summary>
+            Gets the sender object that raised the event.
+            </summary>
+        </member>
+        <member name="P:UniRx.IEventPattern`2.EventArgs">
+            <summary>
+            Gets the event data that was generated by the event.
+            </summary>
+        </member>
+        <member name="T:UniRx.EventPattern`1">
+            <summary>
+            Represents a .NET event invocation consisting of the weakly typed object that raised the event and the data that was generated by the event.
+            </summary>
+            <typeparam name="TEventArgs">The type of the event data generated by the event.</typeparam>
+        </member>
+        <member name="M:UniRx.EventPattern`1.#ctor(System.Object,`0)">
+            <summary>
+            Creates a new data representation instance of a .NET event invocation with the given sender and event data.
+            </summary>
+            <param name="sender">The sender object that raised the event.</param>
+            <param name="e">The event data that was generated by the event.</param>
+        </member>
+        <member name="T:UniRx.EventPattern`2">
+            <summary>
+            Represents a .NET event invocation consisting of the strongly typed object that raised the event and the data that was generated by the event.
+            </summary>
+            <typeparam name="TSender">The type of the sender that raised the event.</typeparam>
+            <typeparam name="TEventArgs">The type of the event data generated by the event.</typeparam>
+        </member>
+        <member name="M:UniRx.EventPattern`2.#ctor(`0,`1)">
+            <summary>
+            Creates a new data representation instance of a .NET event invocation with the given sender and event data.
+            </summary>
+            <param name="sender">The sender object that raised the event.</param>
+            <param name="e">The event data that was generated by the event.</param>
+        </member>
+        <member name="P:UniRx.EventPattern`2.Sender">
+            <summary>
+            Gets the sender object that raised the event.
+            </summary>
+        </member>
+        <member name="P:UniRx.EventPattern`2.EventArgs">
+            <summary>
+            Gets the event data that was generated by the event.
+            </summary>
+        </member>
+        <member name="M:UniRx.EventPattern`2.Equals(UniRx.EventPattern{`0,`1})">
+            <summary>
+            Determines whether the current EventPattern&lt;TSender, TEventArgs&gt; object represents the same event as a specified EventPattern&lt;TSender, TEventArgs&gt; object.
+            </summary>
+            <param name="other">An object to compare to the current EventPattern&lt;TSender, TEventArgs&gt; object.</param>
+            <returns>true if both EventPattern&lt;TSender, TEventArgs&gt; objects represent the same event; otherwise, false.</returns>
+        </member>
+        <member name="M:UniRx.EventPattern`2.Equals(System.Object)">
+            <summary>
+            Determines whether the specified System.Object is equal to the current EventPattern&lt;TSender, TEventArgs&gt;.
+            </summary>
+            <param name="obj">The System.Object to compare with the current EventPattern&lt;TSender, TEventArgs&gt;.</param>
+            <returns>true if the specified System.Object is equal to the current EventPattern&lt;TSender, TEventArgs&gt;; otherwise, false.</returns>
+        </member>
+        <member name="M:UniRx.EventPattern`2.GetHashCode">
+            <summary>
+            Returns the hash code for the current EventPattern&lt;TSender, TEventArgs&gt; instance.
+            </summary>
+            <returns>A hash code for the current EventPattern&lt;TSender, TEventArgs&gt; instance.</returns>
+        </member>
+        <member name="M:UniRx.EventPattern`2.op_Equality(UniRx.EventPattern{`0,`1},UniRx.EventPattern{`0,`1})">
+            <summary>
+            Determines whether two specified EventPattern&lt;TSender, TEventArgs&gt; objects represent the same event.
+            </summary>
+            <param name="first">The first EventPattern&lt;TSender, TEventArgs&gt; to compare, or null.</param>
+            <param name="second">The second EventPattern&lt;TSender, TEventArgs&gt; to compare, or null.</param>
+            <returns>true if both EventPattern&lt;TSender, TEventArgs&gt; objects represent the same event; otherwise, false.</returns>
+        </member>
+        <member name="M:UniRx.EventPattern`2.op_Inequality(UniRx.EventPattern{`0,`1},UniRx.EventPattern{`0,`1})">
+            <summary>
+            Determines whether two specified EventPattern&lt;TSender, TEventArgs&gt; objects represent a different event.
+            </summary>
+            <param name="first">The first EventPattern&lt;TSender, TEventArgs&gt; to compare, or null.</param>
+            <param name="second">The second EventPattern&lt;TSender, TEventArgs&gt; to compare, or null.</param>
+            <returns>true if both EventPattern&lt;TSender, TEventArgs&gt; objects don't represent the same event; otherwise, false.</returns>
+        </member>
+        <member name="T:UniRx.InternalUtil.AsyncLock">
+            <summary>
+            Asynchronous lock.
+            </summary>
+        </member>
+        <member name="M:UniRx.InternalUtil.AsyncLock.Wait(System.Action)">
+            <summary>
+            Queues the action for execution. If the caller acquires the lock and becomes the owner,
+            the queue is processed. If the lock is already owned, the action is queued and will get
+            processed by the owner.
+            </summary>
+            <param name="action">Action to queue for execution.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is null.</exception>
+        </member>
+        <member name="M:UniRx.InternalUtil.AsyncLock.Dispose">
+            <summary>
+            Clears the work items in the queue and drops further work being queued.
+            </summary>
+        </member>
+        <member name="T:UniRx.InternalUtil.MicroCoroutine">
+            <summary>
+            Simple supports(only yield return null) lightweight, threadsafe coroutine dispatcher.
+            </summary>
+        </member>
+        <member name="T:UniRx.InternalUtil.ScheduledItem">
+            <summary>
+            Abstract base class for scheduled work items.
+            </summary>
+        </member>
+        <member name="M:UniRx.InternalUtil.ScheduledItem.#ctor(System.Action,System.TimeSpan)">
+            <summary>
+            Creates a new scheduled work item to run at the specified time.
+            </summary>
+            <param name="dueTime">Absolute time at which the work item has to be executed.</param>
+        </member>
+        <member name="P:UniRx.InternalUtil.ScheduledItem.DueTime">
+            <summary>
+            Gets the absolute time at which the item is due for invocation.
+            </summary>
+        </member>
+        <member name="M:UniRx.InternalUtil.ScheduledItem.Invoke">
+            <summary>
+            Invokes the work item.
+            </summary>
+        </member>
+        <member name="M:UniRx.InternalUtil.ScheduledItem.CompareTo(UniRx.InternalUtil.ScheduledItem)">
+            <summary>
+            Compares the work item with another work item based on absolute time values.
+            </summary>
+            <param name="other">Work item to compare the current work item to.</param>
+            <returns>Relative ordering between this and the specified work item.</returns>
+            <remarks>The inequality operators are overloaded to provide results consistent with the IComparable implementation. Equality operators implement traditional reference equality semantics.</remarks>
+        </member>
+        <member name="M:UniRx.InternalUtil.ScheduledItem.op_LessThan(UniRx.InternalUtil.ScheduledItem,UniRx.InternalUtil.ScheduledItem)">
+            <summary>
+            Determines whether one specified ScheduledItem&lt;TAbsolute&gt; object is due before a second specified ScheduledItem&lt;TAbsolute&gt; object.
+            </summary>
+            <param name="left">The first object to compare.</param>
+            <param name="right">The second object to compare.</param>
+            <returns>true if the DueTime value of left is earlier than the DueTime value of right; otherwise, false.</returns>
+            <remarks>This operator provides results consistent with the IComparable implementation.</remarks>
+        </member>
+        <member name="M:UniRx.InternalUtil.ScheduledItem.op_LessThanOrEqual(UniRx.InternalUtil.ScheduledItem,UniRx.InternalUtil.ScheduledItem)">
+            <summary>
+            Determines whether one specified ScheduledItem&lt;TAbsolute&gt; object is due before or at the same of a second specified ScheduledItem&lt;TAbsolute&gt; object.
+            </summary>
+            <param name="left">The first object to compare.</param>
+            <param name="right">The second object to compare.</param>
+            <returns>true if the DueTime value of left is earlier than or simultaneous with the DueTime value of right; otherwise, false.</returns>
+            <remarks>This operator provides results consistent with the IComparable implementation.</remarks>
+        </member>
+        <member name="M:UniRx.InternalUtil.ScheduledItem.op_GreaterThan(UniRx.InternalUtil.ScheduledItem,UniRx.InternalUtil.ScheduledItem)">
+            <summary>
+            Determines whether one specified ScheduledItem&lt;TAbsolute&gt; object is due after a second specified ScheduledItem&lt;TAbsolute&gt; object.
+            </summary>
+            <param name="left">The first object to compare.</param>
+            <param name="right">The second object to compare.</param>
+            <returns>true if the DueTime value of left is later than the DueTime value of right; otherwise, false.</returns>
+            <remarks>This operator provides results consistent with the IComparable implementation.</remarks>
+        </member>
+        <member name="M:UniRx.InternalUtil.ScheduledItem.op_GreaterThanOrEqual(UniRx.InternalUtil.ScheduledItem,UniRx.InternalUtil.ScheduledItem)">
+            <summary>
+            Determines whether one specified ScheduledItem&lt;TAbsolute&gt; object is due after or at the same time of a second specified ScheduledItem&lt;TAbsolute&gt; object.
+            </summary>
+            <param name="left">The first object to compare.</param>
+            <param name="right">The second object to compare.</param>
+            <returns>true if the DueTime value of left is later than or simultaneous with the DueTime value of right; otherwise, false.</returns>
+            <remarks>This operator provides results consistent with the IComparable implementation.</remarks>
+        </member>
+        <member name="M:UniRx.InternalUtil.ScheduledItem.op_Equality(UniRx.InternalUtil.ScheduledItem,UniRx.InternalUtil.ScheduledItem)">
+            <summary>
+            Determines whether two specified ScheduledItem&lt;TAbsolute, TValue&gt; objects are equal.
+            </summary>
+            <param name="left">The first object to compare.</param>
+            <param name="right">The second object to compare.</param>
+            <returns>true if both ScheduledItem&lt;TAbsolute, TValue&gt; are equal; otherwise, false.</returns>
+            <remarks>This operator does not provide results consistent with the IComparable implementation. Instead, it implements reference equality.</remarks>
+        </member>
+        <member name="M:UniRx.InternalUtil.ScheduledItem.op_Inequality(UniRx.InternalUtil.ScheduledItem,UniRx.InternalUtil.ScheduledItem)">
+            <summary>
+            Determines whether two specified ScheduledItem&lt;TAbsolute, TValue&gt; objects are inequal.
+            </summary>
+            <param name="left">The first object to compare.</param>
+            <param name="right">The second object to compare.</param>
+            <returns>true if both ScheduledItem&lt;TAbsolute, TValue&gt; are inequal; otherwise, false.</returns>
+            <remarks>This operator does not provide results consistent with the IComparable implementation. Instead, it implements reference equality.</remarks>
+        </member>
+        <member name="M:UniRx.InternalUtil.ScheduledItem.Equals(System.Object)">
+            <summary>
+            Determines whether a ScheduledItem&lt;TAbsolute&gt; object is equal to the specified object.
+            </summary>
+            <param name="obj">The object to compare to the current ScheduledItem&lt;TAbsolute&gt; object.</param>
+            <returns>true if the obj parameter is a ScheduledItem&lt;TAbsolute&gt; object and is equal to the current ScheduledItem&lt;TAbsolute&gt; object; otherwise, false.</returns>
+        </member>
+        <member name="M:UniRx.InternalUtil.ScheduledItem.GetHashCode">
+            <summary>
+            Returns the hash code for the current ScheduledItem&lt;TAbsolute&gt; object.
+            </summary>
+            <returns>A 32-bit signed integer hash code.</returns>
+        </member>
+        <member name="P:UniRx.InternalUtil.ScheduledItem.IsCanceled">
+            <summary>
+            Gets whether the work item has received a cancellation request.
+            </summary>
+        </member>
+        <member name="T:UniRx.InternalUtil.SchedulerQueue">
+            <summary>
+            Efficient scheduler queue that maintains scheduled items sorted by absolute time.
+            </summary>
+            <remarks>This type is not thread safe; users should ensure proper synchronization.</remarks>
+        </member>
+        <member name="M:UniRx.InternalUtil.SchedulerQueue.#ctor">
+            <summary>
+            Creates a new scheduler queue with a default initial capacity.
+            </summary>
+        </member>
+        <member name="M:UniRx.InternalUtil.SchedulerQueue.#ctor(System.Int32)">
+            <summary>
+            Creats a new scheduler queue with the specified initial capacity.
+            </summary>
+            <param name="capacity">Initial capacity of the scheduler queue.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="capacity"/> is less than zero.</exception>
+        </member>
+        <member name="P:UniRx.InternalUtil.SchedulerQueue.Count">
+            <summary>
+            Gets the number of scheduled items in the scheduler queue.
+            </summary>
+        </member>
+        <member name="M:UniRx.InternalUtil.SchedulerQueue.Enqueue(UniRx.InternalUtil.ScheduledItem)">
+            <summary>
+            Enqueues the specified work item to be scheduled.
+            </summary>
+            <param name="scheduledItem">Work item to be scheduled.</param>
+        </member>
+        <member name="M:UniRx.InternalUtil.SchedulerQueue.Remove(UniRx.InternalUtil.ScheduledItem)">
+            <summary>
+            Removes the specified work item from the scheduler queue.
+            </summary>
+            <param name="scheduledItem">Work item to be removed from the scheduler queue.</param>
+            <returns>true if the item was found; false otherwise.</returns>
+        </member>
+        <member name="M:UniRx.InternalUtil.SchedulerQueue.Dequeue">
+            <summary>
+            Dequeues the next work item from the scheduler queue.
+            </summary>
+            <returns>Next work item in the scheduler queue (removed).</returns>
+        </member>
+        <member name="M:UniRx.InternalUtil.SchedulerQueue.Peek">
+            <summary>
+            Peeks the next work item in the scheduler queue.
+            </summary>
+            <returns>Next work item in the scheduler queue (not removed).</returns>
+        </member>
+        <member name="T:UniRx.IObserver`2">
+            <summary>
+            Provides a mechanism for receiving push-based notifications and returning a response.
+            </summary>
+            <typeparam name="TValue">
+            The type of the elements received by the observer.
+            This type parameter is contravariant. That is, you can use either the type you specified or any type that is less derived. For more information about covariance and contravariance, see Covariance and Contravariance in Generics.
+            </typeparam>
+            <typeparam name="TResult">
+            The type of the result returned from the observer's notification handlers.
+            This type parameter is covariant. That is, you can use either the type you specified or any type that is more derived. For more information about covariance and contravariance, see Covariance and Contravariance in Generics.
+            </typeparam>
+        </member>
+        <member name="M:UniRx.IObserver`2.OnNext(`0)">
+            <summary>
+            Notifies the observer of a new element in the sequence.
+            </summary>
+            <param name="value">The new element in the sequence.</param>
+            <returns>Result returned upon observation of a new element.</returns>
+        </member>
+        <member name="M:UniRx.IObserver`2.OnError(System.Exception)">
+            <summary>
+            Notifies the observer that an exception has occurred.
+            </summary>
+            <param name="exception">The exception that occurred.</param>
+            <returns>Result returned upon observation of an error.</returns>
+        </member>
+        <member name="M:UniRx.IObserver`2.OnCompleted">
+            <summary>
+            Notifies the observer of the end of the sequence.
+            </summary>
+            <returns>Result returned upon observation of the sequence completion.</returns>
+        </member>
+        <member name="T:UniRx.NotificationKind">
+            <summary>
+            Indicates the type of a notification.
+            </summary>
+        </member>
+        <member name="F:UniRx.NotificationKind.OnNext">
+            <summary>
+            Represents an OnNext notification.
+            </summary>
+        </member>
+        <member name="F:UniRx.NotificationKind.OnError">
+            <summary>
+            Represents an OnError notification.
+            </summary>
+        </member>
+        <member name="F:UniRx.NotificationKind.OnCompleted">
+            <summary>
+            Represents an OnCompleted notification.
+            </summary>
+        </member>
+        <member name="T:UniRx.Notification`1">
+            <summary>
+            Represents a notification to an observer.
+            </summary>
+            <typeparam name="T">The type of the elements received by the observer.</typeparam>
+        </member>
+        <member name="M:UniRx.Notification`1.#ctor">
+            <summary>
+            Default constructor used by derived types.
+            </summary>
+        </member>
+        <member name="P:UniRx.Notification`1.Value">
+            <summary>
+            Returns the value of an OnNext notification or throws an exception.
+            </summary>
+        </member>
+        <member name="P:UniRx.Notification`1.HasValue">
+            <summary>
+            Returns a value that indicates whether the notification has a value.
+            </summary>
+        </member>
+        <member name="P:UniRx.Notification`1.Exception">
+            <summary>
+            Returns the exception of an OnError notification or returns null.
+            </summary>
+        </member>
+        <member name="P:UniRx.Notification`1.Kind">
+            <summary>
+            Gets the kind of notification that is represented.
+            </summary>
+        </member>
+        <member name="T:UniRx.Notification`1.OnNextNotification">
+            <summary>
+            Represents an OnNext notification to an observer.
+            </summary>
+        </member>
+        <member name="M:UniRx.Notification`1.OnNextNotification.#ctor(`0)">
+            <summary>
+            Constructs a notification of a new value.
+            </summary>
+        </member>
+        <member name="P:UniRx.Notification`1.OnNextNotification.Value">
+            <summary>
+            Returns the value of an OnNext notification.
+            </summary>
+        </member>
+        <member name="P:UniRx.Notification`1.OnNextNotification.Exception">
+            <summary>
+            Returns null.
+            </summary>
+        </member>
+        <member name="P:UniRx.Notification`1.OnNextNotification.HasValue">
+            <summary>
+            Returns true.
+            </summary>
+        </member>
+        <member name="P:UniRx.Notification`1.OnNextNotification.Kind">
+            <summary>
+            Returns NotificationKind.OnNext.
+            </summary>
+        </member>
+        <member name="M:UniRx.Notification`1.OnNextNotification.GetHashCode">
+            <summary>
+            Returns the hash code for this instance.
+            </summary>
+        </member>
+        <member name="M:UniRx.Notification`1.OnNextNotification.Equals(UniRx.Notification{`0})">
+            <summary>
+            Indicates whether this instance and a specified object are equal.
+            </summary>
+        </member>
+        <member name="M:UniRx.Notification`1.OnNextNotification.ToString">
+            <summary>
+            Returns a string representation of this instance.
+            </summary>
+        </member>
+        <member name="M:UniRx.Notification`1.OnNextNotification.Accept(UniRx.IObserver{`0})">
+            <summary>
+            Invokes the observer's method corresponding to the notification.
+            </summary>
+            <param name="observer">Observer to invoke the notification on.</param>
+        </member>
+        <member name="M:UniRx.Notification`1.OnNextNotification.Accept``1(UniRx.IObserver{`0,``0})">
+            <summary>
+            Invokes the observer's method corresponding to the notification and returns the produced result.
+            </summary>
+            <param name="observer">Observer to invoke the notification on.</param>
+            <returns>Result produced by the observation.</returns>
+        </member>
+        <member name="M:UniRx.Notification`1.OnNextNotification.Accept(System.Action{`0},System.Action{System.Exception},System.Action)">
+            <summary>
+            Invokes the delegate corresponding to the notification.
+            </summary>
+            <param name="onNext">Delegate to invoke for an OnNext notification.</param>
+            <param name="onError">Delegate to invoke for an OnError notification.</param>
+            <param name="onCompleted">Delegate to invoke for an OnCompleted notification.</param>
+        </member>
+        <member name="M:UniRx.Notification`1.OnNextNotification.Accept``1(System.Func{`0,``0},System.Func{System.Exception,``0},System.Func{``0})">
+            <summary>
+            Invokes the delegate corresponding to the notification and returns the produced result.
+            </summary>
+            <param name="onNext">Delegate to invoke for an OnNext notification.</param>
+            <param name="onError">Delegate to invoke for an OnError notification.</param>
+            <param name="onCompleted">Delegate to invoke for an OnCompleted notification.</param>
+            <returns>Result produced by the observation.</returns>
+        </member>
+        <member name="T:UniRx.Notification`1.OnErrorNotification">
+            <summary>
+            Represents an OnError notification to an observer.
+            </summary>
+        </member>
+        <member name="M:UniRx.Notification`1.OnErrorNotification.#ctor(System.Exception)">
+            <summary>
+            Constructs a notification of an exception.
+            </summary>
+        </member>
+        <member name="P:UniRx.Notification`1.OnErrorNotification.Value">
+            <summary>
+            Throws the exception.
+            </summary>
+        </member>
+        <member name="P:UniRx.Notification`1.OnErrorNotification.Exception">
+            <summary>
+            Returns the exception.
+            </summary>
+        </member>
+        <member name="P:UniRx.Notification`1.OnErrorNotification.HasValue">
+            <summary>
+            Returns false.
+            </summary>
+        </member>
+        <member name="P:UniRx.Notification`1.OnErrorNotification.Kind">
+            <summary>
+            Returns NotificationKind.OnError.
+            </summary>
+        </member>
+        <member name="M:UniRx.Notification`1.OnErrorNotification.GetHashCode">
+            <summary>
+            Returns the hash code for this instance.
+            </summary>
+        </member>
+        <member name="M:UniRx.Notification`1.OnErrorNotification.Equals(UniRx.Notification{`0})">
+            <summary>
+            Indicates whether this instance and other are equal.
+            </summary>
+        </member>
+        <member name="M:UniRx.Notification`1.OnErrorNotification.ToString">
+            <summary>
+            Returns a string representation of this instance.
+            </summary>
+        </member>
+        <member name="M:UniRx.Notification`1.OnErrorNotification.Accept(UniRx.IObserver{`0})">
+            <summary>
+            Invokes the observer's method corresponding to the notification.
+            </summary>
+            <param name="observer">Observer to invoke the notification on.</param>
+        </member>
+        <member name="M:UniRx.Notification`1.OnErrorNotification.Accept``1(UniRx.IObserver{`0,``0})">
+            <summary>
+            Invokes the observer's method corresponding to the notification and returns the produced result.
+            </summary>
+            <param name="observer">Observer to invoke the notification on.</param>
+            <returns>Result produced by the observation.</returns>
+        </member>
+        <member name="M:UniRx.Notification`1.OnErrorNotification.Accept(System.Action{`0},System.Action{System.Exception},System.Action)">
+            <summary>
+            Invokes the delegate corresponding to the notification.
+            </summary>
+            <param name="onNext">Delegate to invoke for an OnNext notification.</param>
+            <param name="onError">Delegate to invoke for an OnError notification.</param>
+            <param name="onCompleted">Delegate to invoke for an OnCompleted notification.</param>
+        </member>
+        <member name="M:UniRx.Notification`1.OnErrorNotification.Accept``1(System.Func{`0,``0},System.Func{System.Exception,``0},System.Func{``0})">
+            <summary>
+            Invokes the delegate corresponding to the notification and returns the produced result.
+            </summary>
+            <param name="onNext">Delegate to invoke for an OnNext notification.</param>
+            <param name="onError">Delegate to invoke for an OnError notification.</param>
+            <param name="onCompleted">Delegate to invoke for an OnCompleted notification.</param>
+            <returns>Result produced by the observation.</returns>
+        </member>
+        <member name="T:UniRx.Notification`1.OnCompletedNotification">
+            <summary>
+            Represents an OnCompleted notification to an observer.
+            </summary>
+        </member>
+        <member name="M:UniRx.Notification`1.OnCompletedNotification.#ctor">
+            <summary>
+            Constructs a notification of the end of a sequence.
+            </summary>
+        </member>
+        <member name="P:UniRx.Notification`1.OnCompletedNotification.Value">
+            <summary>
+            Throws an InvalidOperationException.
+            </summary>
+        </member>
+        <member name="P:UniRx.Notification`1.OnCompletedNotification.Exception">
+            <summary>
+            Returns null.
+            </summary>
+        </member>
+        <member name="P:UniRx.Notification`1.OnCompletedNotification.HasValue">
+            <summary>
+            Returns false.
+            </summary>
+        </member>
+        <member name="P:UniRx.Notification`1.OnCompletedNotification.Kind">
+            <summary>
+            Returns NotificationKind.OnCompleted.
+            </summary>
+        </member>
+        <member name="M:UniRx.Notification`1.OnCompletedNotification.GetHashCode">
+            <summary>
+            Returns the hash code for this instance.
+            </summary>
+        </member>
+        <member name="M:UniRx.Notification`1.OnCompletedNotification.Equals(UniRx.Notification{`0})">
+            <summary>
+            Indicates whether this instance and other are equal.
+            </summary>
+        </member>
+        <member name="M:UniRx.Notification`1.OnCompletedNotification.ToString">
+            <summary>
+            Returns a string representation of this instance.
+            </summary>
+        </member>
+        <member name="M:UniRx.Notification`1.OnCompletedNotification.Accept(UniRx.IObserver{`0})">
+            <summary>
+            Invokes the observer's method corresponding to the notification.
+            </summary>
+            <param name="observer">Observer to invoke the notification on.</param>
+        </member>
+        <member name="M:UniRx.Notification`1.OnCompletedNotification.Accept``1(UniRx.IObserver{`0,``0})">
+            <summary>
+            Invokes the observer's method corresponding to the notification and returns the produced result.
+            </summary>
+            <param name="observer">Observer to invoke the notification on.</param>
+            <returns>Result produced by the observation.</returns>
+        </member>
+        <member name="M:UniRx.Notification`1.OnCompletedNotification.Accept(System.Action{`0},System.Action{System.Exception},System.Action)">
+            <summary>
+            Invokes the delegate corresponding to the notification.
+            </summary>
+            <param name="onNext">Delegate to invoke for an OnNext notification.</param>
+            <param name="onError">Delegate to invoke for an OnError notification.</param>
+            <param name="onCompleted">Delegate to invoke for an OnCompleted notification.</param>
+        </member>
+        <member name="M:UniRx.Notification`1.OnCompletedNotification.Accept``1(System.Func{`0,``0},System.Func{System.Exception,``0},System.Func{``0})">
+            <summary>
+            Invokes the delegate corresponding to the notification and returns the produced result.
+            </summary>
+            <param name="onNext">Delegate to invoke for an OnNext notification.</param>
+            <param name="onError">Delegate to invoke for an OnError notification.</param>
+            <param name="onCompleted">Delegate to invoke for an OnCompleted notification.</param>
+            <returns>Result produced by the observation.</returns>
+        </member>
+        <member name="M:UniRx.Notification`1.Equals(UniRx.Notification{`0})">
+            <summary>
+            Determines whether the current Notification&lt;T&gt; object has the same observer message payload as a specified Notification&lt;T&gt; value.
+            </summary>
+            <param name="other">An object to compare to the current Notification&lt;T&gt; object.</param>
+            <returns>true if both Notification&lt;T&gt; objects have the same observer message payload; otherwise, false.</returns>
+            <remarks>
+            Equality of Notification&lt;T&gt; objects is based on the equality of the observer message payload they represent, including the notification Kind and the Value or Exception (if any).
+            This means two Notification&lt;T&gt; objects can be equal even though they don't represent the same observer method call, but have the same Kind and have equal parameters passed to the observer method.
+            In case one wants to determine whether two Notification&lt;T&gt; objects represent the same observer method call, use Object.ReferenceEquals identity equality instead.
+            </remarks>
+        </member>
+        <member name="M:UniRx.Notification`1.op_Equality(UniRx.Notification{`0},UniRx.Notification{`0})">
+            <summary>
+            Determines whether the two specified Notification&lt;T&gt; objects have the same observer message payload.
+            </summary>
+            <param name="left">The first Notification&lt;T&gt; to compare, or null.</param>
+            <param name="right">The second Notification&lt;T&gt; to compare, or null.</param>
+            <returns>true if the first Notification&lt;T&gt; value has the same observer message payload as the second Notification&lt;T&gt; value; otherwise, false.</returns>
+            <remarks>
+            Equality of Notification&lt;T&gt; objects is based on the equality of the observer message payload they represent, including the notification Kind and the Value or Exception (if any).
+            This means two Notification&lt;T&gt; objects can be equal even though they don't represent the same observer method call, but have the same Kind and have equal parameters passed to the observer method.
+            In case one wants to determine whether two Notification&lt;T&gt; objects represent the same observer method call, use Object.ReferenceEquals identity equality instead.
+            </remarks>
+        </member>
+        <member name="M:UniRx.Notification`1.op_Inequality(UniRx.Notification{`0},UniRx.Notification{`0})">
+            <summary>
+            Determines whether the two specified Notification&lt;T&gt; objects have a different observer message payload.
+            </summary>
+            <param name="left">The first Notification&lt;T&gt; to compare, or null.</param>
+            <param name="right">The second Notification&lt;T&gt; to compare, or null.</param>
+            <returns>true if the first Notification&lt;T&gt; value has a different observer message payload as the second Notification&lt;T&gt; value; otherwise, false.</returns>
+            <remarks>
+            Equality of Notification&lt;T&gt; objects is based on the equality of the observer message payload they represent, including the notification Kind and the Value or Exception (if any).
+            This means two Notification&lt;T&gt; objects can be equal even though they don't represent the same observer method call, but have the same Kind and have equal parameters passed to the observer method.
+            In case one wants to determine whether two Notification&lt;T&gt; objects represent a different observer method call, use Object.ReferenceEquals identity equality instead.
+            </remarks>
+        </member>
+        <member name="M:UniRx.Notification`1.Equals(System.Object)">
+            <summary>
+            Determines whether the specified System.Object is equal to the current Notification&lt;T&gt;.
+            </summary>
+            <param name="obj">The System.Object to compare with the current Notification&lt;T&gt;.</param>
+            <returns>true if the specified System.Object is equal to the current Notification&lt;T&gt;; otherwise, false.</returns>
+            <remarks>
+            Equality of Notification&lt;T&gt; objects is based on the equality of the observer message payload they represent, including the notification Kind and the Value or Exception (if any).
+            This means two Notification&lt;T&gt; objects can be equal even though they don't represent the same observer method call, but have the same Kind and have equal parameters passed to the observer method.
+            In case one wants to determine whether two Notification&lt;T&gt; objects represent the same observer method call, use Object.ReferenceEquals identity equality instead.
+            </remarks>
+        </member>
+        <member name="M:UniRx.Notification`1.Accept(UniRx.IObserver{`0})">
+            <summary>
+            Invokes the observer's method corresponding to the notification.
+            </summary>
+            <param name="observer">Observer to invoke the notification on.</param>
+        </member>
+        <member name="M:UniRx.Notification`1.Accept``1(UniRx.IObserver{`0,``0})">
+            <summary>
+            Invokes the observer's method corresponding to the notification and returns the produced result.
+            </summary>
+            <typeparam name="TResult">The type of the result returned from the observer's notification handlers.</typeparam>
+            <param name="observer">Observer to invoke the notification on.</param>
+            <returns>Result produced by the observation.</returns>
+        </member>
+        <member name="M:UniRx.Notification`1.Accept(System.Action{`0},System.Action{System.Exception},System.Action)">
+            <summary>
+            Invokes the delegate corresponding to the notification.
+            </summary>
+            <param name="onNext">Delegate to invoke for an OnNext notification.</param>
+            <param name="onError">Delegate to invoke for an OnError notification.</param>
+            <param name="onCompleted">Delegate to invoke for an OnCompleted notification.</param>
+        </member>
+        <member name="M:UniRx.Notification`1.Accept``1(System.Func{`0,``0},System.Func{System.Exception,``0},System.Func{``0})">
+            <summary>
+            Invokes the delegate corresponding to the notification and returns the produced result.
+            </summary>
+            <typeparam name="TResult">The type of the result returned from the notification handler delegates.</typeparam>
+            <param name="onNext">Delegate to invoke for an OnNext notification.</param>
+            <param name="onError">Delegate to invoke for an OnError notification.</param>
+            <param name="onCompleted">Delegate to invoke for an OnCompleted notification.</param>
+            <returns>Result produced by the observation.</returns>
+        </member>
+        <member name="M:UniRx.Notification`1.ToObservable">
+            <summary>
+            Returns an observable sequence with a single notification, using the immediate scheduler.
+            </summary>
+            <returns>The observable sequence that surfaces the behavior of the notification upon subscription.</returns>
+        </member>
+        <member name="M:UniRx.Notification`1.ToObservable(UniRx.IScheduler)">
+            <summary>
+            Returns an observable sequence with a single notification.
+            </summary>
+            <param name="scheduler">Scheduler to send out the notification calls on.</param>
+            <returns>The observable sequence that surfaces the behavior of the notification upon subscription.</returns>
+        </member>
+        <member name="T:UniRx.Notification">
+            <summary>
+            Provides a set of static methods for constructing notifications.
+            </summary>
+        </member>
+        <member name="M:UniRx.Notification.CreateOnNext``1(``0)">
+            <summary>
+            Creates an object that represents an OnNext notification to an observer.
+            </summary>
+            <typeparam name="T">The type of the elements received by the observer. Upon dematerialization of the notifications into an observable sequence, this type is used as the element type for the sequence.</typeparam>
+            <param name="value">The value contained in the notification.</param>
+            <returns>The OnNext notification containing the value.</returns>
+        </member>
+        <member name="M:UniRx.Notification.CreateOnError``1(System.Exception)">
+            <summary>
+            Creates an object that represents an OnError notification to an observer.
+            </summary>
+            <typeparam name="T">The type of the elements received by the observer. Upon dematerialization of the notifications into an observable sequence, this type is used as the element type for the sequence.</typeparam>
+            <param name="error">The exception contained in the notification.</param>
+            <returns>The OnError notification containing the exception.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="error"/> is null.</exception>
+        </member>
+        <member name="M:UniRx.Notification.CreateOnCompleted``1">
+            <summary>
+            Creates an object that represents an OnCompleted notification to an observer.
+            </summary>
+            <typeparam name="T">The type of the elements received by the observer. Upon dematerialization of the notifications into an observable sequence, this type is used as the element type for the sequence.</typeparam>
+            <returns>The OnCompleted notification.</returns>
+        </member>
+        <member name="T:UniRx.BooleanNotifier">
+            <summary>
+            Notify boolean flag.
+            </summary>
+        </member>
+        <member name="P:UniRx.BooleanNotifier.Value">
+            <summary>Current flag value</summary>
+        </member>
+        <member name="M:UniRx.BooleanNotifier.#ctor(System.Boolean)">
+            <summary>
+            Setup initial flag.
+            </summary>
+        </member>
+        <member name="M:UniRx.BooleanNotifier.TurnOn">
+            <summary>
+            Set and raise true if current value isn't true.
+            </summary>
+        </member>
+        <member name="M:UniRx.BooleanNotifier.TurnOff">
+            <summary>
+            Set and raise false if current value isn't false.
+            </summary>
+        </member>
+        <member name="M:UniRx.BooleanNotifier.SwitchValue">
+            <summary>
+            Set and raise reverse value.
+            </summary>
+        </member>
+        <member name="M:UniRx.BooleanNotifier.Subscribe(UniRx.IObserver{System.Boolean})">
+            <summary>
+            Subscribe observer.
+            </summary>
+        </member>
+        <member name="T:UniRx.CountChangedStatus">
+            <summary>Event kind of CountNotifier.</summary>
+        </member>
+        <member name="F:UniRx.CountChangedStatus.Increment">
+            <summary>Count incremented.</summary>
+        </member>
+        <member name="F:UniRx.CountChangedStatus.Decrement">
+            <summary>Count decremented.</summary>
+        </member>
+        <member name="F:UniRx.CountChangedStatus.Empty">
+            <summary>Count is zero.</summary>
+        </member>
+        <member name="F:UniRx.CountChangedStatus.Max">
+            <summary>Count arrived max.</summary>
+        </member>
+        <member name="T:UniRx.CountNotifier">
+            <summary>
+            Notify event of count flag.
+            </summary>
+        </member>
+        <member name="M:UniRx.CountNotifier.#ctor(System.Int32)">
+            <summary>
+            Setup max count of signal.
+            </summary>
+        </member>
+        <member name="M:UniRx.CountNotifier.Increment(System.Int32)">
+            <summary>
+            Increment count and notify status.
+            </summary>
+        </member>
+        <member name="M:UniRx.CountNotifier.Decrement(System.Int32)">
+            <summary>
+            Decrement count and notify status.
+            </summary>
+        </member>
+        <member name="M:UniRx.CountNotifier.Subscribe(UniRx.IObserver{UniRx.CountChangedStatus})">
+            <summary>
+            Subscribe observer.
+            </summary>
+        </member>
+        <member name="M:UniRx.IMessagePublisher.Publish``1(``0)">
+            <summary>
+            Send Message to all receiver.
+            </summary>
+        </member>
+        <member name="M:UniRx.IMessageReceiver.Receive``1">
+            <summary>
+            Subscribe typed message.
+            </summary>
+        </member>
+        <member name="M:UniRx.IAsyncMessagePublisher.PublishAsync``1(``0)">
+            <summary>
+            Send Message to all receiver and await complete.
+            </summary>
+        </member>
+        <member name="M:UniRx.IAsyncMessageReceiver.Subscribe``1(System.Func{``0,UniRx.IObservable{UniRx.Unit}})">
+            <summary>
+            Subscribe typed message.
+            </summary>
+        </member>
+        <member name="T:UniRx.MessageBroker">
+            <summary>
+            In-Memory PubSub filtered by Type.
+            </summary>
+        </member>
+        <member name="F:UniRx.MessageBroker.Default">
+            <summary>
+            MessageBroker in Global scope.
+            </summary>
+        </member>
+        <member name="T:UniRx.AsyncMessageBroker">
+            <summary>
+            In-Memory PubSub filtered by Type.
+            </summary>
+        </member>
+        <member name="F:UniRx.AsyncMessageBroker.Default">
+            <summary>
+            AsyncMessageBroker in Global scope.
+            </summary>
+        </member>
+        <member name="T:UniRx.ScheduledNotifier`1">
+            <summary>
+            Notify value on setuped scheduler.
+            </summary>
+        </member>
+        <member name="M:UniRx.ScheduledNotifier`1.#ctor">
+            <summary>
+            Use scheduler is Scheduler.DefaultSchedulers.ConstantTimeOperations.
+            </summary>
+        </member>
+        <member name="M:UniRx.ScheduledNotifier`1.#ctor(UniRx.IScheduler)">
+            <summary>
+            Use scheduler is argument's scheduler.
+            </summary>
+        </member>
+        <member name="M:UniRx.ScheduledNotifier`1.Report(`0)">
+            <summary>
+            Push value to subscribers on setuped scheduler.
+            </summary>
+        </member>
+        <member name="M:UniRx.ScheduledNotifier`1.Report(`0,System.TimeSpan)">
+            <summary>
+            Push value to subscribers on setuped scheduler.
+            </summary>
+        </member>
+        <member name="M:UniRx.ScheduledNotifier`1.Report(`0,System.DateTimeOffset)">
+            <summary>
+            Push value to subscribers on setuped scheduler.
+            </summary>
+        </member>
+        <member name="M:UniRx.ScheduledNotifier`1.Subscribe(UniRx.IObserver{`0})">
+            <summary>
+            Subscribe observer.
+            </summary>
+        </member>
+        <member name="T:UniRx.Scheduler.CurrentThreadScheduler">
+            <summary>
+            Represents an object that schedules units of work on the current thread.
+            </summary>
+            <seealso cref="F:UniRx.Scheduler.CurrentThread">Singleton instance of this type exposed through this static property.</seealso>
+        </member>
+        <member name="P:UniRx.Scheduler.CurrentThreadScheduler.IsScheduleRequired">
+            <summary>
+            Gets a value that indicates whether the caller must call a Schedule method.
+            </summary>
+        </member>
+        <member name="P:UniRx.Scheduler.MainThread">
+            <summary>
+            Unity native MainThread Queue Scheduler. Run on mainthread and delayed on coroutine update loop, elapsed time is calculated based on Time.time.
+            </summary>
+        </member>
+        <member name="P:UniRx.Scheduler.MainThreadIgnoreTimeScale">
+            <summary>
+            Another MainThread scheduler, delay elapsed time is calculated based on Time.unscaledDeltaTime.
+            </summary>
+        </member>
+        <member name="P:UniRx.Scheduler.MainThreadFixedUpdate">
+            <summary>
+            Run on fixed update mainthread, delay elapsed time is calculated based on Time.fixedTime.
+            </summary>
+        </member>
+        <member name="P:UniRx.Scheduler.MainThreadEndOfFrame">
+            <summary>
+            Run on end of frame mainthread, delay elapsed time is calculated based on Time.deltaTime.
+            </summary>
+        </member>
+        <member name="T:UniRx.TimeInterval`1">
+            <summary>
+            Represents a value associated with time interval information.
+            The time interval can represent the time it took to produce the value, the interval relative to a previous value, the value's delivery time relative to a base, etc.
+            </summary>
+            <typeparam name="T">The type of the value being annotated with time interval information.</typeparam>
+        </member>
+        <member name="M:UniRx.TimeInterval`1.#ctor(`0,System.TimeSpan)">
+            <summary>
+            Constructs a time interval value.
+            </summary>
+            <param name="value">The value to be annotated with a time interval.</param>
+            <param name="interval">Time interval associated with the value.</param>
+        </member>
+        <member name="P:UniRx.TimeInterval`1.Value">
+            <summary>
+            Gets the value.
+            </summary>
+        </member>
+        <member name="P:UniRx.TimeInterval`1.Interval">
+            <summary>
+            Gets the interval.
+            </summary>
+        </member>
+        <member name="M:UniRx.TimeInterval`1.Equals(UniRx.TimeInterval{`0})">
+            <summary>
+            Determines whether the current TimeInterval&lt;T&gt; value has the same Value and Interval as a specified TimeInterval&lt;T&gt; value.
+            </summary>
+            <param name="other">An object to compare to the current TimeInterval&lt;T&gt; value.</param>
+            <returns>true if both TimeInterval&lt;T&gt; values have the same Value and Interval; otherwise, false.</returns>
+        </member>
+        <member name="M:UniRx.TimeInterval`1.op_Equality(UniRx.TimeInterval{`0},UniRx.TimeInterval{`0})">
+            <summary>
+            Determines whether the two specified TimeInterval&lt;T&gt; values have the same Value and Interval.
+            </summary>
+            <param name="first">The first TimeInterval&lt;T&gt; value to compare.</param>
+            <param name="second">The second TimeInterval&lt;T&gt; value to compare.</param>
+            <returns>true if the first TimeInterval&lt;T&gt; value has the same Value and Interval as the second TimeInterval&lt;T&gt; value; otherwise, false.</returns>
+        </member>
+        <member name="M:UniRx.TimeInterval`1.op_Inequality(UniRx.TimeInterval{`0},UniRx.TimeInterval{`0})">
+            <summary>
+            Determines whether the two specified TimeInterval&lt;T&gt; values don't have the same Value and Interval.
+            </summary>
+            <param name="first">The first TimeInterval&lt;T&gt; value to compare.</param>
+            <param name="second">The second TimeInterval&lt;T&gt; value to compare.</param>
+            <returns>true if the first TimeInterval&lt;T&gt; value has a different Value or Interval as the second TimeInterval&lt;T&gt; value; otherwise, false.</returns>
+        </member>
+        <member name="M:UniRx.TimeInterval`1.Equals(System.Object)">
+            <summary>
+            Determines whether the specified System.Object is equal to the current TimeInterval&lt;T&gt;.
+            </summary>
+            <param name="obj">The System.Object to compare with the current TimeInterval&lt;T&gt;.</param>
+            <returns>true if the specified System.Object is equal to the current TimeInterval&lt;T&gt;; otherwise, false.</returns>
+        </member>
+        <member name="M:UniRx.TimeInterval`1.GetHashCode">
+            <summary>
+            Returns the hash code for the current TimeInterval&lt;T&gt; value.
+            </summary>
+            <returns>A hash code for the current TimeInterval&lt;T&gt; value.</returns>
+        </member>
+        <member name="M:UniRx.TimeInterval`1.ToString">
+            <summary>
+            Returns a string representation of the current TimeInterval&lt;T&gt; value.
+            </summary>
+            <returns>String representation of the current TimeInterval&lt;T&gt; value.</returns>
+        </member>
+        <member name="T:UniRx.Timestamped`1">
+            <summary>
+            Represents value with a timestamp on it.
+            The timestamp typically represents the time the value was received, using an IScheduler's clock to obtain the current time.
+            </summary>
+            <typeparam name="T">The type of the value being timestamped.</typeparam>
+        </member>
+        <member name="M:UniRx.Timestamped`1.#ctor(`0,System.DateTimeOffset)">
+            <summary>
+            Constructs a timestamped value.
+            </summary>
+            <param name="value">The value to be annotated with a timestamp.</param>
+            <param name="timestamp">Timestamp associated with the value.</param>
+        </member>
+        <member name="P:UniRx.Timestamped`1.Value">
+            <summary>
+            Gets the value.
+            </summary>
+        </member>
+        <member name="P:UniRx.Timestamped`1.Timestamp">
+            <summary>
+            Gets the timestamp.
+            </summary>
+        </member>
+        <member name="M:UniRx.Timestamped`1.Equals(UniRx.Timestamped{`0})">
+            <summary>
+            Determines whether the current Timestamped&lt;T&gt; value has the same Value and Timestamp as a specified Timestamped&lt;T&gt; value.
+            </summary>
+            <param name="other">An object to compare to the current Timestamped&lt;T&gt; value.</param>
+            <returns>true if both Timestamped&lt;T&gt; values have the same Value and Timestamp; otherwise, false.</returns>
+        </member>
+        <member name="M:UniRx.Timestamped`1.op_Equality(UniRx.Timestamped{`0},UniRx.Timestamped{`0})">
+            <summary>
+            Determines whether the two specified Timestamped&lt;T&gt; values have the same Value and Timestamp.
+            </summary>
+            <param name="first">The first Timestamped&lt;T&gt; value to compare.</param>
+            <param name="second">The second Timestamped&lt;T&gt; value to compare.</param>
+            <returns>true if the first Timestamped&lt;T&gt; value has the same Value and Timestamp as the second Timestamped&lt;T&gt; value; otherwise, false.</returns>
+        </member>
+        <member name="M:UniRx.Timestamped`1.op_Inequality(UniRx.Timestamped{`0},UniRx.Timestamped{`0})">
+            <summary>
+            Determines whether the two specified Timestamped&lt;T&gt; values don't have the same Value and Timestamp.
+            </summary>
+            <param name="first">The first Timestamped&lt;T&gt; value to compare.</param>
+            <param name="second">The second Timestamped&lt;T&gt; value to compare.</param>
+            <returns>true if the first Timestamped&lt;T&gt; value has a different Value or Timestamp as the second Timestamped&lt;T&gt; value; otherwise, false.</returns>
+        </member>
+        <member name="M:UniRx.Timestamped`1.Equals(System.Object)">
+            <summary>
+            Determines whether the specified System.Object is equal to the current Timestamped&lt;T&gt;.
+            </summary>
+            <param name="obj">The System.Object to compare with the current Timestamped&lt;T&gt;.</param>
+            <returns>true if the specified System.Object is equal to the current Timestamped&lt;T&gt;; otherwise, false.</returns>
+        </member>
+        <member name="M:UniRx.Timestamped`1.GetHashCode">
+            <summary>
+            Returns the hash code for the current Timestamped&lt;T&gt; value.
+            </summary>
+            <returns>A hash code for the current Timestamped&lt;T&gt; value.</returns>
+        </member>
+        <member name="M:UniRx.Timestamped`1.ToString">
+            <summary>
+            Returns a string representation of the current Timestamped&lt;T&gt; value.
+            </summary>
+            <returns>String representation of the current Timestamped&lt;T&gt; value.</returns>
+        </member>
+        <member name="T:UniRx.Timestamped">
+            <summary>
+            A helper class with a factory method for creating Timestamped&lt;T&gt; instances.
+            </summary>
+        </member>
+        <member name="M:UniRx.Timestamped.Create``1(``0,System.DateTimeOffset)">
+            <summary>
+            Creates an instance of a Timestamped&lt;T&gt;.  This is syntactic sugar that uses type inference
+            to avoid specifying a type in a constructor call, which is very useful when using anonymous types.
+            </summary>
+            <param name="value">The value to be annotated with a timestamp.</param>
+            <param name="timestamp">Timestamp associated with the value.</param>
+            <returns>Creates a new timestamped value.</returns>
+        </member>
+        <member name="M:UniRx.AsyncOperationExtensions.AsObservable(UnityEngine.AsyncOperation,UniRx.IProgress{System.Single})">
+            <summary>
+            If you needs return value, use AsAsyncOperationObservable instead.
+            </summary>
+        </member>
+        <member name="F:UniRx.CancellationToken.None">
+            <summary>Same as Empty.</summary>
+        </member>
+        <member name="P:UniRx.Diagnostics.LogEntry.Context">
+            <summary>[Optional]</summary>
+        </member>
+        <member name="P:UniRx.Diagnostics.LogEntry.Exception">
+            <summary>[Optional]</summary>
+        </member>
+        <member name="P:UniRx.Diagnostics.LogEntry.StackTrace">
+            <summary>[Optional]</summary>
+        </member>
+        <member name="P:UniRx.Diagnostics.LogEntry.State">
+            <summary>[Optional]</summary>
+        </member>
+        <member name="M:UniRx.Diagnostics.Logger.Debug(System.Object,UnityEngine.Object)">
+            <summary>Output LogType.Log but only enables isDebugBuild</summary>
+        </member>
+        <member name="M:UniRx.Diagnostics.Logger.DebugFormat(System.String,System.Object[])">
+            <summary>Output LogType.Log but only enables isDebugBuild</summary>
+        </member>
+        <member name="M:UniRx.Diagnostics.Logger.Raw(UniRx.Diagnostics.LogEntry)">
+            <summary>Publish raw LogEntry.</summary>
+        </member>
+        <member name="M:UniRx.Diagnostics.ObservableDebugExtensions.Debug``1(UniRx.IObservable{``0},System.String)">
+            <summary>
+            Debug helper of observbale stream. Works for only DEBUG symbol.
+            </summary>
+        </member>
+        <member name="M:UniRx.Diagnostics.ObservableDebugExtensions.Debug``1(UniRx.IObservable{``0},UniRx.Diagnostics.Logger)">
+            <summary>
+            Debug helper of observbale stream. Works for only DEBUG symbol.
+            </summary>
+        </member>
+        <member name="T:UniRx.FrameInterval`1">
+            <summary>
+            Represents a value associated with time interval information.
+            The time interval can represent the time it took to produce the value, the interval relative to a previous value, the value's delivery time relative to a base, etc.
+            </summary>
+            <typeparam name="T">The type of the value being annotated with time interval information.</typeparam>
+        </member>
+        <member name="M:UniRx.FrameInterval`1.#ctor(`0,System.Int32)">
+            <summary>
+            Constructs a time interval value.
+            </summary>
+            <param name="value">The value to be annotated with a time interval.</param>
+            <param name="interval">Time interval associated with the value.</param>
+        </member>
+        <member name="P:UniRx.FrameInterval`1.Value">
+            <summary>
+            Gets the value.
+            </summary>
+        </member>
+        <member name="P:UniRx.FrameInterval`1.Interval">
+            <summary>
+            Gets the interval.
+            </summary>
+        </member>
+        <member name="M:UniRx.FrameInterval`1.Equals(UniRx.FrameInterval{`0})">
+            <summary>
+            Determines whether the current FrameInterval&lt;T&gt; value has the same Value and Interval as a specified FrameInterval&lt;T&gt; value.
+            </summary>
+            <param name="other">An object to compare to the current FrameInterval&lt;T&gt; value.</param>
+            <returns>true if both FrameInterval&lt;T&gt; values have the same Value and Interval; otherwise, false.</returns>
+        </member>
+        <member name="M:UniRx.FrameInterval`1.op_Equality(UniRx.FrameInterval{`0},UniRx.FrameInterval{`0})">
+            <summary>
+            Determines whether the two specified FrameInterval&lt;T&gt; values have the same Value and Interval.
+            </summary>
+            <param name="first">The first FrameInterval&lt;T&gt; value to compare.</param>
+            <param name="second">The second FrameInterval&lt;T&gt; value to compare.</param>
+            <returns>true if the first FrameInterval&lt;T&gt; value has the same Value and Interval as the second FrameInterval&lt;T&gt; value; otherwise, false.</returns>
+        </member>
+        <member name="M:UniRx.FrameInterval`1.op_Inequality(UniRx.FrameInterval{`0},UniRx.FrameInterval{`0})">
+            <summary>
+            Determines whether the two specified FrameInterval&lt;T&gt; values don't have the same Value and Interval.
+            </summary>
+            <param name="first">The first FrameInterval&lt;T&gt; value to compare.</param>
+            <param name="second">The second FrameInterval&lt;T&gt; value to compare.</param>
+            <returns>true if the first FrameInterval&lt;T&gt; value has a different Value or Interval as the second FrameInterval&lt;T&gt; value; otherwise, false.</returns>
+        </member>
+        <member name="M:UniRx.FrameInterval`1.Equals(System.Object)">
+            <summary>
+            Determines whether the specified System.Object is equal to the current FrameInterval&lt;T&gt;.
+            </summary>
+            <param name="obj">The System.Object to compare with the current FrameInterval&lt;T&gt;.</param>
+            <returns>true if the specified System.Object is equal to the current FrameInterval&lt;T&gt;; otherwise, false.</returns>
+        </member>
+        <member name="M:UniRx.FrameInterval`1.GetHashCode">
+            <summary>
+            Returns the hash code for the current FrameInterval&lt;T&gt; value.
+            </summary>
+            <returns>A hash code for the current FrameInterval&lt;T&gt; value.</returns>
+        </member>
+        <member name="M:UniRx.FrameInterval`1.ToString">
+            <summary>
+            Returns a string representation of the current FrameInterval&lt;T&gt; value.
+            </summary>
+            <returns>String representation of the current FrameInterval&lt;T&gt; value.</returns>
+        </member>
+        <member name="T:UniRx.IntReactiveProperty">
+            <summary>
+            Inspectable ReactiveProperty.
+            </summary>
+        </member>
+        <member name="T:UniRx.LongReactiveProperty">
+            <summary>
+            Inspectable ReactiveProperty.
+            </summary>
+        </member>
+        <member name="T:UniRx.ByteReactiveProperty">
+            <summary>
+            Inspectable ReactiveProperty.
+            </summary>
+        </member>
+        <member name="T:UniRx.FloatReactiveProperty">
+            <summary>
+            Inspectable ReactiveProperty.
+            </summary>
+        </member>
+        <member name="T:UniRx.DoubleReactiveProperty">
+            <summary>
+            Inspectable ReactiveProperty.
+            </summary>
+        </member>
+        <member name="T:UniRx.StringReactiveProperty">
+            <summary>
+            Inspectable ReactiveProperty.
+            </summary>
+        </member>
+        <member name="T:UniRx.BoolReactiveProperty">
+            <summary>
+            Inspectable ReactiveProperty.
+            </summary>
+        </member>
+        <member name="T:UniRx.Vector2ReactiveProperty">
+            <summary>Inspectable ReactiveProperty.</summary>
+        </member>
+        <member name="T:UniRx.Vector3ReactiveProperty">
+            <summary>Inspectable ReactiveProperty.</summary>
+        </member>
+        <member name="T:UniRx.Vector4ReactiveProperty">
+            <summary>Inspectable ReactiveProperty.</summary>
+        </member>
+        <member name="T:UniRx.ColorReactiveProperty">
+            <summary>Inspectable ReactiveProperty.</summary>
+        </member>
+        <member name="T:UniRx.RectReactiveProperty">
+            <summary>Inspectable ReactiveProperty.</summary>
+        </member>
+        <member name="T:UniRx.AnimationCurveReactiveProperty">
+            <summary>Inspectable ReactiveProperty.</summary>
+        </member>
+        <member name="T:UniRx.BoundsReactiveProperty">
+            <summary>Inspectable ReactiveProperty.</summary>
+        </member>
+        <member name="T:UniRx.QuaternionReactiveProperty">
+            <summary>Inspectable ReactiveProperty.</summary>
+        </member>
+        <member name="T:UniRx.MultilineReactivePropertyAttribute">
+            <summary>
+            Enables multiline input field for StringReactiveProperty. Default line is 3.
+            </summary>
+        </member>
+        <member name="T:UniRx.RangeReactivePropertyAttribute">
+            <summary>
+            Enables range input field for Int/FloatReactiveProperty.
+            </summary>
+        </member>
+        <member name="P:UniRx.LazyTask`1.Exception">
+            <summary>
+            If faulted stock error. If completed or canceld, returns null.
+            </summary>
+        </member>
+        <member name="F:UniRx.MainThreadDispatcher.CullingMode.Disabled">
+            <summary>
+            Won't remove any MainThreadDispatchers.
+            </summary>
+        </member>
+        <member name="F:UniRx.MainThreadDispatcher.CullingMode.Self">
+            <summary>
+            Checks if there is an existing MainThreadDispatcher on Awake(). If so, the new dispatcher removes itself.
+            </summary>
+        </member>
+        <member name="F:UniRx.MainThreadDispatcher.CullingMode.All">
+            <summary>
+            Search for excess MainThreadDispatchers and removes them all on Awake().
+            </summary>
+        </member>
+        <member name="M:UniRx.MainThreadDispatcher.Post(System.Action{System.Object},System.Object)">
+            <summary>Dispatch Asyncrhonous action.</summary>
+        </member>
+        <member name="M:UniRx.MainThreadDispatcher.Send(System.Action{System.Object},System.Object)">
+            <summary>Dispatch Synchronous action if possible.</summary>
+        </member>
+        <member name="M:UniRx.MainThreadDispatcher.UnsafeSend(System.Action)">
+            <summary>Run Synchronous action.</summary>
+        </member>
+        <member name="M:UniRx.MainThreadDispatcher.UnsafeSend``1(System.Action{``0},``0)">
+            <summary>Run Synchronous action.</summary>
+        </member>
+        <member name="M:UniRx.MainThreadDispatcher.SendStartCoroutine(System.Collections.IEnumerator)">
+            <summary>ThreadSafe StartCoroutine.</summary>
+        </member>
+        <member name="F:UniRx.MainThreadDispatchType.Update">
+            <summary>yield return null</summary>
+        </member>
+        <member name="F:UniRx.MainThreadDispatchType.AfterUpdate">
+            <summary>[Obsolete]Same as Update</summary>
+        </member>
+        <member name="P:UniRx.ObservableYieldInstruction`1.IsDone">
+            <summary>
+            HasResult || IsCanceled || HasError
+            </summary>
+        </member>
+        <member name="T:UniRx.ObservableMonoBehaviour">
+            <summary>
+            <para>Note: TypedMonoBehaviour and ObservableMonoBehaviour cause some performance issues.</para>
+            <para>This is legacy interface.</para>
+            <para>I recommend use ObservableTriggers(UniRx.Triggers) instead.</para>
+            <para>More information, see github page.</para>
+            </summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.Awake">
+            <summary>Awake is called when the script instance is being loaded.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.AwakeAsObservable">
+            <summary>Awake is called when the script instance is being loaded.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.FixedUpdate">
+            <summary>This function is called every fixed framerate frame, if the MonoBehaviour is enabled.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.FixedUpdateAsObservable">
+            <summary>This function is called every fixed framerate frame, if the MonoBehaviour is enabled.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.LateUpdate">
+            <summary>LateUpdate is called every frame, if the Behaviour is enabled.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.LateUpdateAsObservable">
+            <summary>LateUpdate is called every frame, if the Behaviour is enabled.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnAnimatorIK(System.Int32)">
+            <summary>Callback for setting up animation IK (inverse kinematics).</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnAnimatorIKAsObservable">
+            <summary>Callback for setting up animation IK (inverse kinematics).</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnAnimatorMove">
+            <summary>Callback for processing animation movements for modifying root motion.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnAnimatorMoveAsObservable">
+            <summary>Callback for processing animation movements for modifying root motion.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnApplicationFocus(System.Boolean)">
+            <summary>Sent to all game objects when the player gets or loses focus.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnApplicationFocusAsObservable">
+            <summary>Sent to all game objects when the player gets or loses focus.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnApplicationPause(System.Boolean)">
+            <summary>Sent to all game objects when the player pauses.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnApplicationPauseAsObservable">
+            <summary>Sent to all game objects when the player pauses.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnApplicationQuit">
+            <summary>Sent to all game objects before the application is quit.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnApplicationQuitAsObservable">
+            <summary>Sent to all game objects before the application is quit.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnAudioFilterRead(System.Single[],System.Int32)">
+            <summary>If OnAudioFilterRead is implemented, Unity will insert a custom filter into the audio DSP chain.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnAudioFilterReadAsObservable">
+            <summary>If OnAudioFilterRead is implemented, Unity will insert a custom filter into the audio DSP chain.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnBecameInvisible">
+            <summary>OnBecameInvisible is called when the renderer is no longer visible by any camera.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnBecameInvisibleAsObservable">
+            <summary>OnBecameInvisible is called when the renderer is no longer visible by any camera.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnBecameVisible">
+            <summary>OnBecameVisible is called when the renderer became visible by any camera.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnBecameVisibleAsObservable">
+            <summary>OnBecameVisible is called when the renderer became visible by any camera.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnCollisionEnter(UnityEngine.Collision)">
+            <summary>OnCollisionEnter is called when this collider/rigidbody has begun touching another rigidbody/collider.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnCollisionEnterAsObservable">
+            <summary>OnCollisionEnter is called when this collider/rigidbody has begun touching another rigidbody/collider.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnCollisionEnter2D(UnityEngine.Collision2D)">
+            <summary>Sent when an incoming collider makes contact with this object's collider (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnCollisionEnter2DAsObservable">
+            <summary>Sent when an incoming collider makes contact with this object's collider (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnCollisionExit(UnityEngine.Collision)">
+            <summary>OnCollisionExit is called when this collider/rigidbody has stopped touching another rigidbody/collider.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnCollisionExitAsObservable">
+            <summary>OnCollisionExit is called when this collider/rigidbody has stopped touching another rigidbody/collider.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnCollisionExit2D(UnityEngine.Collision2D)">
+            <summary>Sent when a collider on another object stops touching this object's collider (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnCollisionExit2DAsObservable">
+            <summary>Sent when a collider on another object stops touching this object's collider (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnCollisionStay(UnityEngine.Collision)">
+            <summary>OnCollisionStay is called once per frame for every collider/rigidbody that is touching rigidbody/collider.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnCollisionStayAsObservable">
+            <summary>OnCollisionStay is called once per frame for every collider/rigidbody that is touching rigidbody/collider.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnCollisionStay2D(UnityEngine.Collision2D)">
+            <summary>Sent each frame where a collider on another object is touching this object's collider (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnCollisionStay2DAsObservable">
+            <summary>Sent each frame where a collider on another object is touching this object's collider (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnConnectedToServer">
+            <summary>Called on the client when you have successfully connected to a server.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnConnectedToServerAsObservable">
+            <summary>Called on the client when you have successfully connected to a server.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnControllerColliderHit(UnityEngine.ControllerColliderHit)">
+            <summary>OnControllerColliderHit is called when the controller hits a collider while performing a Move.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnControllerColliderHitAsObservable">
+            <summary>OnControllerColliderHit is called when the controller hits a collider while performing a Move.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnDestroy">
+            <summary>This function is called when the MonoBehaviour will be destroyed.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnDestroyAsObservable">
+            <summary>This function is called when the MonoBehaviour will be destroyed.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnDisable">
+            <summary>This function is called when the behaviour becomes disabled () or inactive.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnDisableAsObservable">
+            <summary>This function is called when the behaviour becomes disabled () or inactive.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnDrawGizmos">
+            <summary>Implement OnDrawGizmos if you want to draw gizmos that are also pickable and always drawn.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnDrawGizmosAsObservable">
+            <summary>Implement OnDrawGizmos if you want to draw gizmos that are also pickable and always drawn.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnDrawGizmosSelected">
+            <summary>Implement this OnDrawGizmosSelected if you want to draw gizmos only if the object is selected.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnDrawGizmosSelectedAsObservable">
+            <summary>Implement this OnDrawGizmosSelected if you want to draw gizmos only if the object is selected.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnEnable">
+            <summary>This function is called when the object becomes enabled and active.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnEnableAsObservable">
+            <summary>This function is called when the object becomes enabled and active.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnJointBreak(System.Single)">
+            <summary>Called when a joint attached to the same game object broke.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnJointBreakAsObservable">
+            <summary>Called when a joint attached to the same game object broke.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnMouseDown">
+            <summary>OnMouseDown is called when the user has pressed the mouse button while over the GUIElement or Collider.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnMouseDownAsObservable">
+            <summary>OnMouseDown is called when the user has pressed the mouse button while over the GUIElement or Collider.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnMouseDrag">
+            <summary>OnMouseDrag is called when the user has clicked on a GUIElement or Collider and is still holding down the mouse.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnMouseDragAsObservable">
+            <summary>OnMouseDrag is called when the user has clicked on a GUIElement or Collider and is still holding down the mouse.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnMouseEnter">
+            <summary>OnMouseEnter is called when the mouse entered the GUIElement or Collider.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnMouseEnterAsObservable">
+            <summary>OnMouseEnter is called when the mouse entered the GUIElement or Collider.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnMouseExit">
+            <summary>OnMouseExit is called when the mouse is not any longer over the GUIElement or Collider.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnMouseExitAsObservable">
+            <summary>OnMouseExit is called when the mouse is not any longer over the GUIElement or Collider.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnMouseOver">
+            <summary>OnMouseOver is called every frame while the mouse is over the GUIElement or Collider.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnMouseOverAsObservable">
+            <summary>OnMouseOver is called every frame while the mouse is over the GUIElement or Collider.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnMouseUp">
+            <summary>OnMouseUp is called when the user has released the mouse button.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnMouseUpAsObservable">
+            <summary>OnMouseUp is called when the user has released the mouse button.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnMouseUpAsButton">
+            <summary>OnMouseUpAsButton is only called when the mouse is released over the same GUIElement or Collider as it was pressed.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnMouseUpAsButtonAsObservable">
+            <summary>OnMouseUpAsButton is only called when the mouse is released over the same GUIElement or Collider as it was pressed.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnParticleCollision(UnityEngine.GameObject)">
+            <summary>OnParticleCollision is called when a particle hits a collider.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnParticleCollisionAsObservable">
+            <summary>OnParticleCollision is called when a particle hits a collider.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnPostRender">
+            <summary>OnPostRender is called after a camera finished rendering the scene.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnPostRenderAsObservable">
+            <summary>OnPostRender is called after a camera finished rendering the scene.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnPreCull">
+            <summary>OnPreCull is called before a camera culls the scene.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnPreCullAsObservable">
+            <summary>OnPreCull is called before a camera culls the scene.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnPreRender">
+            <summary>OnPreRender is called before a camera starts rendering the scene.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnPreRenderAsObservable">
+            <summary>OnPreRender is called before a camera starts rendering the scene.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnRenderImage(UnityEngine.RenderTexture,UnityEngine.RenderTexture)">
+            <summary>OnRenderImage is called after all rendering is complete to render image.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnRenderImageAsObservable">
+            <summary>OnRenderImage is called after all rendering is complete to render image.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnRenderObject">
+            <summary>OnRenderObject is called after camera has rendered the scene.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnRenderObjectAsObservable">
+            <summary>OnRenderObject is called after camera has rendered the scene.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnServerInitialized">
+            <summary>Called on the server whenever a Network.InitializeServer was invoked and has completed.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnServerInitializedAsObservable">
+            <summary>Called on the server whenever a Network.InitializeServer was invoked and has completed.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnTriggerEnter(UnityEngine.Collider)">
+            <summary>OnTriggerEnter is called when the Collider other enters the trigger.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnTriggerEnterAsObservable">
+            <summary>OnTriggerEnter is called when the Collider other enters the trigger.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnTriggerEnter2D(UnityEngine.Collider2D)">
+            <summary>Sent when another object enters a trigger collider attached to this object (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnTriggerEnter2DAsObservable">
+            <summary>Sent when another object enters a trigger collider attached to this object (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnTriggerExit(UnityEngine.Collider)">
+            <summary>OnTriggerExit is called when the Collider other has stopped touching the trigger.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnTriggerExitAsObservable">
+            <summary>OnTriggerExit is called when the Collider other has stopped touching the trigger.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnTriggerExit2D(UnityEngine.Collider2D)">
+            <summary>Sent when another object leaves a trigger collider attached to this object (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnTriggerExit2DAsObservable">
+            <summary>Sent when another object leaves a trigger collider attached to this object (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnTriggerStay(UnityEngine.Collider)">
+            <summary>OnTriggerStay is called once per frame for every Collider other that is touching the trigger.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnTriggerStayAsObservable">
+            <summary>OnTriggerStay is called once per frame for every Collider other that is touching the trigger.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnTriggerStay2D(UnityEngine.Collider2D)">
+            <summary>Sent each frame where another object is within a trigger collider attached to this object (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnTriggerStay2DAsObservable">
+            <summary>Sent each frame where another object is within a trigger collider attached to this object (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnValidate">
+            <summary>This function is called when the script is loaded or a value is changed in the inspector (Called in the editor only).</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnValidateAsObservable">
+            <summary>This function is called when the script is loaded or a value is changed in the inspector (Called in the editor only).</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnWillRenderObject">
+            <summary>OnWillRenderObject is called once for each camera if the object is visible.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnWillRenderObjectAsObservable">
+            <summary>OnWillRenderObject is called once for each camera if the object is visible.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.Reset">
+            <summary>Reset to default values.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.ResetAsObservable">
+            <summary>Reset to default values.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.Start">
+            <summary>Start is called on the frame when a script is enabled just before any of the Update methods is called the first time.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.StartAsObservable">
+            <summary>Start is called on the frame when a script is enabled just before any of the Update methods is called the first time.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.Update">
+            <summary>Update is called every frame, if the MonoBehaviour is enabled.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.UpdateAsObservable">
+            <summary>Update is called every frame, if the MonoBehaviour is enabled.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnDisconnectedFromServer(UnityEngine.NetworkDisconnection)">
+            <summary>Called on the client when the connection was lost or you disconnected from the server.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnDisconnectedFromServerAsObservable">
+            <summary>Called on the client when the connection was lost or you disconnected from the server.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnFailedToConnect(UnityEngine.NetworkConnectionError)">
+            <summary>Called on the client when a connection attempt fails for some reason.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnFailedToConnectAsObservable">
+            <summary>Called on the client when a connection attempt fails for some reason.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnFailedToConnectToMasterServer(UnityEngine.NetworkConnectionError)">
+            <summary>Called on clients or servers when there is a problem connecting to the MasterServer.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnFailedToConnectToMasterServerAsObservable">
+            <summary>Called on clients or servers when there is a problem connecting to the MasterServer.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnMasterServerEvent(UnityEngine.MasterServerEvent)">
+            <summary>Called on clients or servers when reporting events from the MasterServer.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnMasterServerEventAsObservable">
+            <summary>Called on clients or servers when reporting events from the MasterServer.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnNetworkInstantiate(UnityEngine.NetworkMessageInfo)">
+            <summary>Called on objects which have been network instantiated with Network.Instantiate.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnNetworkInstantiateAsObservable">
+            <summary>Called on objects which have been network instantiated with Network.Instantiate.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnPlayerConnected(UnityEngine.NetworkPlayer)">
+            <summary>Called on the server whenever a new player has successfully connected.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnPlayerConnectedAsObservable">
+            <summary>Called on the server whenever a new player has successfully connected.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnPlayerDisconnected(UnityEngine.NetworkPlayer)">
+            <summary>Called on the server whenever a player disconnected from the server.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnPlayerDisconnectedAsObservable">
+            <summary>Called on the server whenever a player disconnected from the server.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnSerializeNetworkView(UnityEngine.BitStream,UnityEngine.NetworkMessageInfo)">
+            <summary>Used to customize synchronization of variables in a script watched by a network view.</summary>
+        </member>
+        <member name="M:UniRx.ObservableMonoBehaviour.OnSerializeNetworkViewAsObservable">
+            <summary>Used to customize synchronization of variables in a script watched by a network view.</summary>
+        </member>
+        <member name="M:UniRx.ObserveExtensions.ObserveEveryValueChanged``2(``0,System.Func{``0,``1},UniRx.FrameCountType,System.Boolean)">
+            <summary>
+            Publish target property when value is changed. If source is destroyed/destructed, publish OnCompleted.
+            </summary>
+            <param name="fastDestroyCheck">If true and target is UnityObject, use destroyed check by additional component. It is faster check for lifecycle but needs initial cost.</param>
+        </member>
+        <member name="M:UniRx.ObserveExtensions.ObserveEveryValueChanged``2(``0,System.Func{``0,``1},UniRx.FrameCountType,System.Collections.Generic.IEqualityComparer{``1})">
+            <summary>
+            Publish target property when value is changed. If source is destroyed/destructed, publish OnCompleted.
+            </summary>
+        </member>
+        <member name="M:UniRx.ObserveExtensions.ObserveEveryValueChanged``2(``0,System.Func{``0,``1},UniRx.FrameCountType,System.Collections.Generic.IEqualityComparer{``1},System.Boolean)">
+            <summary>
+            Publish target property when value is changed. If source is destroyed/destructed, publish OnCompleted.
+            </summary>
+            <param name="fastDestroyCheck">If true and target is UnityObject, use destroyed check by additional component. It is faster check for lifecycle but needs initial cost.</param>
+        </member>
+        <member name="T:UniRx.IPresenter">
+            <summary>
+            [Obsolete]Infrastructure interface for PresenterBase`T
+            </summary>
+        </member>
+        <member name="T:UniRx.PresenterBase">
+            <summary>
+            [Obsolete]PresenterBase can control dependency of presenter's hierarchy.
+            </summary>
+        </member>
+        <member name="M:UniRx.PresenterBase.BeforeInitialize">
+            <summary>
+            Same as Start but called before children initialized, it's chance for propagate argument to children.
+            </summary>
+        </member>
+        <member name="M:UniRx.PresenterBase.ForceInitialize">
+            <summary>
+            Force Start BeforeInitialize/Initialize. If you create presenter dynamically, maybe useful.
+            </summary>
+        </member>
+        <member name="M:UniRx.PresenterBase.Initialize">
+            <summary>
+            Same as Start but called after all children are initialized.
+            </summary>
+        </member>
+        <member name="T:UniRx.PresenterBase`1">
+            <summary>
+            [Obsolete]PresenterBase can control dependency of presenter's hierarchy.
+            </summary>
+        </member>
+        <member name="M:UniRx.PresenterBase`1.InitializeAsObservable">
+            <summary>
+            Observable sequence called after initialize completed.
+            </summary>
+        </member>
+        <member name="M:UniRx.PresenterBase`1.PropagateArgument(`0)">
+            <summary>
+            Propagate(Set) argument.
+            </summary>
+        </member>
+        <member name="P:UniRx.PresenterBase`1.Children">
+            <summary>
+            Dependency on hierarchy of this presenter. If Children is empty, you can return this.EmptyChildren.
+            </summary>
+        </member>
+        <member name="M:UniRx.PresenterBase`1.BeforeInitialize(`0)">
+            <summary>
+            Same as Start but called before children initialized, it's chance for propagate argument to children.
+            </summary>
+        </member>
+        <member name="M:UniRx.PresenterBase`1.Initialize(`0)">
+            <summary>
+            Same as Start but called after all children are initialized.
+            </summary>
+        </member>
+        <member name="M:UniRx.PresenterBase`1.ForceInitialize(`0)">
+            <summary>
+            Force Start BeforeInitialize/Initialize. If you create presenter dynamically, maybe useful.
+            </summary>
+        </member>
+        <member name="M:UniRx.PresenterBase`1.Awake">
+            <summary>Infrastructure method called by UnityEngine. If you needs override Awake, override OnAwake.</summary>
+        </member>
+        <member name="M:UniRx.PresenterBase`1.OnAwake">
+            <summary>An alternative of Awake.</summary>
+        </member>
+        <member name="M:UniRx.PresenterBase`1.Start">
+            <summary>Infrastructure method called by UnityEngine. don't call directly, don't override, don't hide!</summary>
+        </member>
+        <member name="T:UniRx.ReactiveCommand">
+            <summary>
+            Represents ReactiveCommand&lt;Unit&gt;
+            </summary>
+        </member>
+        <member name="M:UniRx.ReactiveCommand.#ctor">
+            <summary>
+            CanExecute is always true.
+            </summary>
+        </member>
+        <member name="M:UniRx.ReactiveCommand.#ctor(UniRx.IObservable{System.Boolean},System.Boolean)">
+            <summary>
+            CanExecute is changed from canExecute sequence.
+            </summary>
+        </member>
+        <member name="M:UniRx.ReactiveCommand.Execute">
+            <summary>Push null to subscribers.</summary>
+        </member>
+        <member name="M:UniRx.ReactiveCommand.ForceExecute">
+            <summary>Force push parameter to subscribers.</summary>
+        </member>
+        <member name="M:UniRx.ReactiveCommand`1.#ctor">
+            <summary>
+            CanExecute is always true.
+            </summary>
+        </member>
+        <member name="M:UniRx.ReactiveCommand`1.#ctor(UniRx.IObservable{System.Boolean},System.Boolean)">
+            <summary>
+            CanExecute is changed from canExecute sequence.
+            </summary>
+        </member>
+        <member name="M:UniRx.ReactiveCommand`1.Execute(`0)">
+            <summary>Push parameter to subscribers when CanExecute.</summary>
+        </member>
+        <member name="M:UniRx.ReactiveCommand`1.ForceExecute(`0)">
+            <summary>Force push parameter to subscribers.</summary>
+        </member>
+        <member name="M:UniRx.ReactiveCommand`1.Subscribe(UniRx.IObserver{`0})">
+            <summary>Subscribe execute.</summary>
+        </member>
+        <member name="M:UniRx.ReactiveCommand`1.Dispose">
+            <summary>
+            Stop all subscription and lock CanExecute is false.
+            </summary>
+        </member>
+        <member name="T:UniRx.AsyncReactiveCommand">
+            <summary>
+            Variation of ReactiveCommand, when executing command then CanExecute = false after CanExecute = true.
+            </summary>
+        </member>
+        <member name="M:UniRx.AsyncReactiveCommand.#ctor">
+            <summary>
+            CanExecute is automatically changed when executing to false and finished to true.
+            </summary>
+        </member>
+        <member name="M:UniRx.AsyncReactiveCommand.#ctor(UniRx.IObservable{System.Boolean})">
+            <summary>
+            CanExecute is automatically changed when executing to false and finished to true.
+            </summary>
+        </member>
+        <member name="M:UniRx.AsyncReactiveCommand.#ctor(UniRx.IReactiveProperty{System.Boolean})">
+            <summary>
+            CanExecute is automatically changed when executing to false and finished to true.
+            The source is shared between other AsyncReactiveCommand.
+            </summary>
+        </member>
+        <member name="T:UniRx.AsyncReactiveCommand`1">
+            <summary>
+            Variation of ReactiveCommand, canExecute is changed when executing command then CanExecute = false after CanExecute = true.
+            </summary>
+        </member>
+        <member name="M:UniRx.AsyncReactiveCommand`1.#ctor">
+            <summary>
+            CanExecute is automatically changed when executing to false and finished to true.
+            </summary>
+        </member>
+        <member name="M:UniRx.AsyncReactiveCommand`1.#ctor(UniRx.IObservable{System.Boolean})">
+            <summary>
+            CanExecute is automatically changed when executing to false and finished to true.
+            </summary>
+        </member>
+        <member name="M:UniRx.AsyncReactiveCommand`1.#ctor(UniRx.IReactiveProperty{System.Boolean})">
+            <summary>
+            CanExecute is automatically changed when executing to false and finished to true.
+            The source is shared between other AsyncReactiveCommand.
+            </summary>
+        </member>
+        <member name="M:UniRx.AsyncReactiveCommand`1.Execute(`0)">
+            <summary>Push parameter to subscribers when CanExecute.</summary>
+        </member>
+        <member name="M:UniRx.AsyncReactiveCommand`1.Subscribe(System.Func{`0,UniRx.IObservable{UniRx.Unit}})">
+            <summary>Subscribe execute.</summary>
+        </member>
+        <member name="M:UniRx.ReactiveCommandExtensions.ToReactiveCommand(UniRx.IObservable{System.Boolean},System.Boolean)">
+            <summary>
+            Create non parameter commands. CanExecute is changed from canExecute sequence.
+            </summary>
+        </member>
+        <member name="M:UniRx.ReactiveCommandExtensions.ToReactiveCommand``1(UniRx.IObservable{System.Boolean},System.Boolean)">
+            <summary>
+            Create parametered comamnds. CanExecute is changed from canExecute sequence.
+            </summary>
+        </member>
+        <member name="M:UniRx.ReactiveCommandExtensions.BindTo(UniRx.ReactiveCommand{UniRx.Unit},UnityEngine.UI.Button)">
+            <summary>
+            Bind RaectiveCommand to button's interactable and onClick.
+            </summary>
+        </member>
+        <member name="M:UniRx.ReactiveCommandExtensions.BindToOnClick(UniRx.ReactiveCommand{UniRx.Unit},UnityEngine.UI.Button,System.Action{UniRx.Unit})">
+            <summary>
+            Bind RaectiveCommand to button's interactable and onClick and register onClick action to command.
+            </summary>
+        </member>
+        <member name="M:UniRx.ReactiveCommandExtensions.BindToButtonOnClick(UniRx.IObservable{System.Boolean},UnityEngine.UI.Button,System.Action{UniRx.Unit},System.Boolean)">
+            <summary>
+            Bind canExecuteSource to button's interactable and onClick and register onClick action to command.
+            </summary>
+        </member>
+        <member name="M:UniRx.AsyncReactiveCommandExtensions.BindTo(UniRx.AsyncReactiveCommand{UniRx.Unit},UnityEngine.UI.Button)">
+            <summary>
+            Bind AsyncRaectiveCommand to button's interactable and onClick.
+            </summary>
+        </member>
+        <member name="M:UniRx.AsyncReactiveCommandExtensions.BindToOnClick(UniRx.AsyncReactiveCommand{UniRx.Unit},UnityEngine.UI.Button,System.Func{UniRx.Unit,UniRx.IObservable{UniRx.Unit}})">
+            <summary>
+            Bind AsyncRaectiveCommand to button's interactable and onClick and register async action to command.
+            </summary>
+        </member>
+        <member name="M:UniRx.AsyncReactiveCommandExtensions.BindToOnClick(UnityEngine.UI.Button,System.Func{UniRx.Unit,UniRx.IObservable{UniRx.Unit}})">
+            <summary>
+            Create AsyncReactiveCommand and bind to button's interactable and onClick and register async action to command.
+            </summary>
+        </member>
+        <member name="M:UniRx.AsyncReactiveCommandExtensions.BindToOnClick(UnityEngine.UI.Button,UniRx.IReactiveProperty{System.Boolean},System.Func{UniRx.Unit,UniRx.IObservable{UniRx.Unit}})">
+            <summary>
+            Create AsyncReactiveCommand and bind sharedCanExecuteSource source to button's interactable and onClick and register async action to command.
+            </summary>
+        </member>
+        <member name="T:UniRx.ReactiveProperty`1">
+            <summary>
+            Lightweight property broker.
+            </summary>
+        </member>
+        <member name="T:UniRx.ReadOnlyReactiveProperty`1">
+            <summary>
+            Lightweight property broker.
+            </summary>
+        </member>
+        <member name="T:UniRx.ReactivePropertyExtensions">
+            <summary>
+            Extension methods of ReactiveProperty&lt;T&gt;
+            </summary>
+        </member>
+        <member name="M:UniRx.ReactivePropertyExtensions.ToSequentialReadOnlyReactiveProperty``1(UniRx.IObservable{``0})">
+            <summary>
+            Create ReadOnlyReactiveProperty with distinctUntilChanged: false.
+            </summary>
+        </member>
+        <member name="M:UniRx.ReactivePropertyExtensions.ToSequentialReadOnlyReactiveProperty``1(UniRx.IObservable{``0},``0)">
+            <summary>
+            Create ReadOnlyReactiveProperty with distinctUntilChanged: false.
+            </summary>
+        </member>
+        <member name="M:UniRx.ReactivePropertyExtensions.CombineLatestValuesAreAllTrue(System.Collections.Generic.IEnumerable{UniRx.IObservable{System.Boolean}})">
+            <summary>
+            Lastest values of each sequence are all true.
+            </summary>
+        </member>
+        <member name="M:UniRx.ReactivePropertyExtensions.CombineLatestValuesAreAllFalse(System.Collections.Generic.IEnumerable{UniRx.IObservable{System.Boolean}})">
+            <summary>
+            Lastest values of each sequence are all false.
+            </summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableAnimatorTrigger.OnAnimatorIK(System.Int32)">
+            <summary>Callback for setting up animation IK (inverse kinematics).</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableAnimatorTrigger.OnAnimatorIKAsObservable">
+            <summary>Callback for setting up animation IK (inverse kinematics).</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableAnimatorTrigger.OnAnimatorMove">
+            <summary>Callback for processing animation movements for modifying root motion.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableAnimatorTrigger.OnAnimatorMoveAsObservable">
+            <summary>Callback for processing animation movements for modifying root motion.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableCanvasGroupChangedTrigger.OnCanvasGroupChangedAsObservable">
+            <summary>Callback that is sent if the canvas group is changed.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableCollision2DTrigger.OnCollisionEnter2D(UnityEngine.Collision2D)">
+            <summary>Sent when an incoming collider makes contact with this object's collider (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableCollision2DTrigger.OnCollisionEnter2DAsObservable">
+            <summary>Sent when an incoming collider makes contact with this object's collider (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableCollision2DTrigger.OnCollisionExit2D(UnityEngine.Collision2D)">
+            <summary>Sent when a collider on another object stops touching this object's collider (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableCollision2DTrigger.OnCollisionExit2DAsObservable">
+            <summary>Sent when a collider on another object stops touching this object's collider (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableCollision2DTrigger.OnCollisionStay2D(UnityEngine.Collision2D)">
+            <summary>Sent each frame where a collider on another object is touching this object's collider (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableCollision2DTrigger.OnCollisionStay2DAsObservable">
+            <summary>Sent each frame where a collider on another object is touching this object's collider (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableCollisionTrigger.OnCollisionEnter(UnityEngine.Collision)">
+            <summary>OnCollisionEnter is called when this collider/rigidbody has begun touching another rigidbody/collider.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableCollisionTrigger.OnCollisionEnterAsObservable">
+            <summary>OnCollisionEnter is called when this collider/rigidbody has begun touching another rigidbody/collider.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableCollisionTrigger.OnCollisionExit(UnityEngine.Collision)">
+            <summary>OnCollisionExit is called when this collider/rigidbody has stopped touching another rigidbody/collider.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableCollisionTrigger.OnCollisionExitAsObservable">
+            <summary>OnCollisionExit is called when this collider/rigidbody has stopped touching another rigidbody/collider.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableCollisionTrigger.OnCollisionStay(UnityEngine.Collision)">
+            <summary>OnCollisionStay is called once per frame for every collider/rigidbody that is touching rigidbody/collider.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableCollisionTrigger.OnCollisionStayAsObservable">
+            <summary>OnCollisionStay is called once per frame for every collider/rigidbody that is touching rigidbody/collider.</summary>
+        </member>
+        <member name="P:UniRx.Triggers.ObservableDestroyTrigger.IsCalledOnDestroy">
+            <summary>
+            Check called OnDestroy.
+            This property does not guarantees GameObject was destroyed,
+            when gameObject is deactive, does not raise OnDestroy.
+            </summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableDestroyTrigger.OnDestroy">
+            <summary>This function is called when the MonoBehaviour will be destroyed.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableDestroyTrigger.OnDestroyAsObservable">
+            <summary>This function is called when the MonoBehaviour will be destroyed.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableDestroyTrigger.ForceRaiseOnDestroy">
+            <summary>Invoke OnDestroy, this method is used on internal.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableEnableTrigger.OnEnable">
+            <summary>This function is called when the object becomes enabled and active.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableEnableTrigger.OnEnableAsObservable">
+            <summary>This function is called when the object becomes enabled and active.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableEnableTrigger.OnDisable">
+            <summary>This function is called when the behaviour becomes disabled () or inactive.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableEnableTrigger.OnDisableAsObservable">
+            <summary>This function is called when the behaviour becomes disabled () or inactive.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableFixedUpdateTrigger.FixedUpdate">
+            <summary>This function is called every fixed framerate frame, if the MonoBehaviour is enabled.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableFixedUpdateTrigger.FixedUpdateAsObservable">
+            <summary>This function is called every fixed framerate frame, if the MonoBehaviour is enabled.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableLateUpdateTrigger.LateUpdate">
+            <summary>LateUpdate is called every frame, if the Behaviour is enabled.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableLateUpdateTrigger.LateUpdateAsObservable">
+            <summary>LateUpdate is called every frame, if the Behaviour is enabled.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableMouseTrigger.OnMouseDown">
+            <summary>OnMouseDown is called when the user has pressed the mouse button while over the GUIElement or Collider.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableMouseTrigger.OnMouseDownAsObservable">
+            <summary>OnMouseDown is called when the user has pressed the mouse button while over the GUIElement or Collider.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableMouseTrigger.OnMouseDrag">
+            <summary>OnMouseDrag is called when the user has clicked on a GUIElement or Collider and is still holding down the mouse.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableMouseTrigger.OnMouseDragAsObservable">
+            <summary>OnMouseDrag is called when the user has clicked on a GUIElement or Collider and is still holding down the mouse.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableMouseTrigger.OnMouseEnter">
+            <summary>OnMouseEnter is called when the mouse entered the GUIElement or Collider.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableMouseTrigger.OnMouseEnterAsObservable">
+            <summary>OnMouseEnter is called when the mouse entered the GUIElement or Collider.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableMouseTrigger.OnMouseExit">
+            <summary>OnMouseExit is called when the mouse is not any longer over the GUIElement or Collider.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableMouseTrigger.OnMouseExitAsObservable">
+            <summary>OnMouseExit is called when the mouse is not any longer over the GUIElement or Collider.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableMouseTrigger.OnMouseOver">
+            <summary>OnMouseOver is called every frame while the mouse is over the GUIElement or Collider.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableMouseTrigger.OnMouseOverAsObservable">
+            <summary>OnMouseOver is called every frame while the mouse is over the GUIElement or Collider.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableMouseTrigger.OnMouseUp">
+            <summary>OnMouseUp is called when the user has released the mouse button.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableMouseTrigger.OnMouseUpAsObservable">
+            <summary>OnMouseUp is called when the user has released the mouse button.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableMouseTrigger.OnMouseUpAsButton">
+            <summary>OnMouseUpAsButton is only called when the mouse is released over the same GUIElement or Collider as it was pressed.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableMouseTrigger.OnMouseUpAsButtonAsObservable">
+            <summary>OnMouseUpAsButton is only called when the mouse is released over the same GUIElement or Collider as it was pressed.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableParticleTrigger.OnParticleCollision(UnityEngine.GameObject)">
+            <summary>OnParticleCollision is called when a particle hits a collider.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableParticleTrigger.OnParticleCollisionAsObservable">
+            <summary>OnParticleCollision is called when a particle hits a collider.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableRectTransformTrigger.OnRectTransformDimensionsChangeAsObservable">
+            <summary>Callback that is sent if an associated RectTransform has it's dimensions changed.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableRectTransformTrigger.OnRectTransformRemovedAsObservable">
+            <summary>Callback that is sent if an associated RectTransform is removed.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTransformChangedTrigger.OnBeforeTransformParentChangedAsObservable">
+            <summary>Callback sent to the graphic before a Transform parent change occurs.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTransformChangedTrigger.OnTransformParentChangedAsObservable">
+            <summary>This function is called when the parent property of the transform of the GameObject has changed.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTransformChangedTrigger.OnTransformChildrenChangedAsObservable">
+            <summary>This function is called when the list of children of the transform of the GameObject has changed.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTrigger2DTrigger.OnTriggerEnter2D(UnityEngine.Collider2D)">
+            <summary>Sent when another object enters a trigger collider attached to this object (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTrigger2DTrigger.OnTriggerEnter2DAsObservable">
+            <summary>Sent when another object enters a trigger collider attached to this object (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTrigger2DTrigger.OnTriggerExit2D(UnityEngine.Collider2D)">
+            <summary>Sent when another object leaves a trigger collider attached to this object (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTrigger2DTrigger.OnTriggerExit2DAsObservable">
+            <summary>Sent when another object leaves a trigger collider attached to this object (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTrigger2DTrigger.OnTriggerStay2D(UnityEngine.Collider2D)">
+            <summary>Sent each frame where another object is within a trigger collider attached to this object (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTrigger2DTrigger.OnTriggerStay2DAsObservable">
+            <summary>Sent each frame where another object is within a trigger collider attached to this object (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerBase.Awake">
+            <summary>Awake is called when the script instance is being loaded.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerBase.AwakeAsObservable">
+            <summary>Awake is called when the script instance is being loaded.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerBase.Start">
+            <summary>Start is called on the frame when a script is enabled just before any of the Update methods is called the first time.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerBase.StartAsObservable">
+            <summary>Start is called on the frame when a script is enabled just before any of the Update methods is called the first time.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerBase.OnDestroy">
+            <summary>This function is called when the MonoBehaviour will be destroyed.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerBase.OnDestroyAsObservable">
+            <summary>This function is called when the MonoBehaviour will be destroyed.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnAnimatorIKAsObservable(UnityEngine.Component)">
+            <summary>Callback for setting up animation IK (inverse kinematics).</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnAnimatorMoveAsObservable(UnityEngine.Component)">
+            <summary>Callback for processing animation movements for modifying root motion.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnCollisionEnter2DAsObservable(UnityEngine.Component)">
+            <summary>Sent when an incoming collider makes contact with this object's collider (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnCollisionExit2DAsObservable(UnityEngine.Component)">
+            <summary>Sent when a collider on another object stops touching this object's collider (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnCollisionStay2DAsObservable(UnityEngine.Component)">
+            <summary>Sent each frame where a collider on another object is touching this object's collider (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnCollisionEnterAsObservable(UnityEngine.Component)">
+            <summary>OnCollisionEnter is called when this collider/rigidbody has begun touching another rigidbody/collider.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnCollisionExitAsObservable(UnityEngine.Component)">
+            <summary>OnCollisionExit is called when this collider/rigidbody has stopped touching another rigidbody/collider.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnCollisionStayAsObservable(UnityEngine.Component)">
+            <summary>OnCollisionStay is called once per frame for every collider/rigidbody that is touching rigidbody/collider.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnDestroyAsObservable(UnityEngine.Component)">
+            <summary>This function is called when the MonoBehaviour will be destroyed.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnEnableAsObservable(UnityEngine.Component)">
+            <summary>This function is called when the object becomes enabled and active.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnDisableAsObservable(UnityEngine.Component)">
+            <summary>This function is called when the behaviour becomes disabled () or inactive.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.FixedUpdateAsObservable(UnityEngine.Component)">
+            <summary>This function is called every fixed framerate frame, if the MonoBehaviour is enabled.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.LateUpdateAsObservable(UnityEngine.Component)">
+            <summary>LateUpdate is called every frame, if the Behaviour is enabled.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnMouseDownAsObservable(UnityEngine.Component)">
+            <summary>OnMouseDown is called when the user has pressed the mouse button while over the GUIElement or Collider.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnMouseDragAsObservable(UnityEngine.Component)">
+            <summary>OnMouseDrag is called when the user has clicked on a GUIElement or Collider and is still holding down the mouse.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnMouseEnterAsObservable(UnityEngine.Component)">
+            <summary>OnMouseEnter is called when the mouse entered the GUIElement or Collider.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnMouseExitAsObservable(UnityEngine.Component)">
+            <summary>OnMouseExit is called when the mouse is not any longer over the GUIElement or Collider.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnMouseOverAsObservable(UnityEngine.Component)">
+            <summary>OnMouseOver is called every frame while the mouse is over the GUIElement or Collider.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnMouseUpAsObservable(UnityEngine.Component)">
+            <summary>OnMouseUp is called when the user has released the mouse button.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnMouseUpAsButtonAsObservable(UnityEngine.Component)">
+            <summary>OnMouseUpAsButton is only called when the mouse is released over the same GUIElement or Collider as it was pressed.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnTriggerEnter2DAsObservable(UnityEngine.Component)">
+            <summary>Sent when another object enters a trigger collider attached to this object (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnTriggerExit2DAsObservable(UnityEngine.Component)">
+            <summary>Sent when another object leaves a trigger collider attached to this object (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnTriggerStay2DAsObservable(UnityEngine.Component)">
+            <summary>Sent each frame where another object is within a trigger collider attached to this object (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnTriggerEnterAsObservable(UnityEngine.Component)">
+            <summary>OnTriggerEnter is called when the Collider other enters the trigger.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnTriggerExitAsObservable(UnityEngine.Component)">
+            <summary>OnTriggerExit is called when the Collider other has stopped touching the trigger.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnTriggerStayAsObservable(UnityEngine.Component)">
+            <summary>OnTriggerStay is called once per frame for every Collider other that is touching the trigger.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.UpdateAsObservable(UnityEngine.Component)">
+            <summary>Update is called every frame, if the MonoBehaviour is enabled.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnBecameInvisibleAsObservable(UnityEngine.Component)">
+            <summary>OnBecameInvisible is called when the renderer is no longer visible by any camera.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnBecameVisibleAsObservable(UnityEngine.Component)">
+            <summary>OnBecameVisible is called when the renderer became visible by any camera.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnBeforeTransformParentChangedAsObservable(UnityEngine.Component)">
+            <summary>Callback sent to the graphic before a Transform parent change occurs.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnTransformParentChangedAsObservable(UnityEngine.Component)">
+            <summary>This function is called when the parent property of the transform of the GameObject has changed.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnTransformChildrenChangedAsObservable(UnityEngine.Component)">
+            <summary>This function is called when the list of children of the transform of the GameObject has changed.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnCanvasGroupChangedAsObservable(UnityEngine.Component)">
+            <summary>Callback that is sent if the canvas group is changed.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnRectTransformDimensionsChangeAsObservable(UnityEngine.Component)">
+            <summary>Callback that is sent if an associated RectTransform has it's dimensions changed.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnRectTransformRemovedAsObservable(UnityEngine.Component)">
+            <summary>Callback that is sent if an associated RectTransform is removed.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnParticleCollisionAsObservable(UnityEngine.Component)">
+            <summary>OnParticleCollision is called when a particle hits a collider.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnAnimatorIKAsObservable(UnityEngine.GameObject)">
+            <summary>Callback for setting up animation IK (inverse kinematics).</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnAnimatorMoveAsObservable(UnityEngine.GameObject)">
+            <summary>Callback for processing animation movements for modifying root motion.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnCollisionEnter2DAsObservable(UnityEngine.GameObject)">
+            <summary>Sent when an incoming collider makes contact with this object's collider (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnCollisionExit2DAsObservable(UnityEngine.GameObject)">
+            <summary>Sent when a collider on another object stops touching this object's collider (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnCollisionStay2DAsObservable(UnityEngine.GameObject)">
+            <summary>Sent each frame where a collider on another object is touching this object's collider (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnCollisionEnterAsObservable(UnityEngine.GameObject)">
+            <summary>OnCollisionEnter is called when this collider/rigidbody has begun touching another rigidbody/collider.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnCollisionExitAsObservable(UnityEngine.GameObject)">
+            <summary>OnCollisionExit is called when this collider/rigidbody has stopped touching another rigidbody/collider.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnCollisionStayAsObservable(UnityEngine.GameObject)">
+            <summary>OnCollisionStay is called once per frame for every collider/rigidbody that is touching rigidbody/collider.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnDestroyAsObservable(UnityEngine.GameObject)">
+            <summary>This function is called when the MonoBehaviour will be destroyed.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnEnableAsObservable(UnityEngine.GameObject)">
+            <summary>This function is called when the object becomes enabled and active.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnDisableAsObservable(UnityEngine.GameObject)">
+            <summary>This function is called when the behaviour becomes disabled () or inactive.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.FixedUpdateAsObservable(UnityEngine.GameObject)">
+            <summary>This function is called every fixed framerate frame, if the MonoBehaviour is enabled.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.LateUpdateAsObservable(UnityEngine.GameObject)">
+            <summary>LateUpdate is called every frame, if the Behaviour is enabled.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnMouseDownAsObservable(UnityEngine.GameObject)">
+            <summary>OnMouseDown is called when the user has pressed the mouse button while over the GUIElement or Collider.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnMouseDragAsObservable(UnityEngine.GameObject)">
+            <summary>OnMouseDrag is called when the user has clicked on a GUIElement or Collider and is still holding down the mouse.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnMouseEnterAsObservable(UnityEngine.GameObject)">
+            <summary>OnMouseEnter is called when the mouse entered the GUIElement or Collider.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnMouseExitAsObservable(UnityEngine.GameObject)">
+            <summary>OnMouseExit is called when the mouse is not any longer over the GUIElement or Collider.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnMouseOverAsObservable(UnityEngine.GameObject)">
+            <summary>OnMouseOver is called every frame while the mouse is over the GUIElement or Collider.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnMouseUpAsObservable(UnityEngine.GameObject)">
+            <summary>OnMouseUp is called when the user has released the mouse button.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnMouseUpAsButtonAsObservable(UnityEngine.GameObject)">
+            <summary>OnMouseUpAsButton is only called when the mouse is released over the same GUIElement or Collider as it was pressed.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnTriggerEnter2DAsObservable(UnityEngine.GameObject)">
+            <summary>Sent when another object enters a trigger collider attached to this object (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnTriggerExit2DAsObservable(UnityEngine.GameObject)">
+            <summary>Sent when another object leaves a trigger collider attached to this object (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnTriggerStay2DAsObservable(UnityEngine.GameObject)">
+            <summary>Sent each frame where another object is within a trigger collider attached to this object (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnTriggerEnterAsObservable(UnityEngine.GameObject)">
+            <summary>OnTriggerEnter is called when the Collider other enters the trigger.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnTriggerExitAsObservable(UnityEngine.GameObject)">
+            <summary>OnTriggerExit is called when the Collider other has stopped touching the trigger.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnTriggerStayAsObservable(UnityEngine.GameObject)">
+            <summary>OnTriggerStay is called once per frame for every Collider other that is touching the trigger.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.UpdateAsObservable(UnityEngine.GameObject)">
+            <summary>Update is called every frame, if the MonoBehaviour is enabled.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnBecameInvisibleAsObservable(UnityEngine.GameObject)">
+            <summary>OnBecameInvisible is called when the renderer is no longer visible by any camera.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnBecameVisibleAsObservable(UnityEngine.GameObject)">
+            <summary>OnBecameVisible is called when the renderer became visible by any camera.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnBeforeTransformParentChangedAsObservable(UnityEngine.GameObject)">
+            <summary>Callback sent to the graphic before a Transform parent change occurs.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnTransformParentChangedAsObservable(UnityEngine.GameObject)">
+            <summary>This function is called when the parent property of the transform of the GameObject has changed.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnTransformChildrenChangedAsObservable(UnityEngine.GameObject)">
+            <summary>This function is called when the list of children of the transform of the GameObject has changed.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnCanvasGroupChangedAsObservable(UnityEngine.GameObject)">
+            <summary>Callback that is sent if the canvas group is changed.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnRectTransformDimensionsChangeAsObservable(UnityEngine.GameObject)">
+            <summary>Callback that is sent if an associated RectTransform has it's dimensions changed.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnRectTransformRemovedAsObservable(UnityEngine.GameObject)">
+            <summary>Callback that is sent if an associated RectTransform is removed.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerExtensions.OnParticleCollisionAsObservable(UnityEngine.GameObject)">
+            <summary>OnParticleCollision is called when a particle hits a collider.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerTrigger.OnTriggerEnter(UnityEngine.Collider)">
+            <summary>OnTriggerEnter is called when the Collider other enters the trigger.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerTrigger.OnTriggerEnterAsObservable">
+            <summary>OnTriggerEnter is called when the Collider other enters the trigger.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerTrigger.OnTriggerExit(UnityEngine.Collider)">
+            <summary>OnTriggerExit is called when the Collider other has stopped touching the trigger.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerTrigger.OnTriggerExitAsObservable">
+            <summary>OnTriggerExit is called when the Collider other has stopped touching the trigger.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerTrigger.OnTriggerStay(UnityEngine.Collider)">
+            <summary>OnTriggerStay is called once per frame for every Collider other that is touching the trigger.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableTriggerTrigger.OnTriggerStayAsObservable">
+            <summary>OnTriggerStay is called once per frame for every Collider other that is touching the trigger.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableUpdateTrigger.Update">
+            <summary>Update is called every frame, if the MonoBehaviour is enabled.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableUpdateTrigger.UpdateAsObservable">
+            <summary>Update is called every frame, if the MonoBehaviour is enabled.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableVisibleTrigger.OnBecameInvisible">
+            <summary>OnBecameInvisible is called when the renderer is no longer visible by any camera.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableVisibleTrigger.OnBecameInvisibleAsObservable">
+            <summary>OnBecameInvisible is called when the renderer is no longer visible by any camera.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableVisibleTrigger.OnBecameVisible">
+            <summary>OnBecameVisible is called when the renderer became visible by any camera.</summary>
+        </member>
+        <member name="M:UniRx.Triggers.ObservableVisibleTrigger.OnBecameVisibleAsObservable">
+            <summary>OnBecameVisible is called when the renderer became visible by any camera.</summary>
+        </member>
+        <member name="T:UniRx.TypedMonoBehaviour">
+            <summary>
+            <para>Note: TypedMonoBehaviour and ObservableMonoBehaviour cause some performance issues.</para>
+            <para>This is legacy interface.</para>
+            <para>I recommend use ObservableTriggers(UniRx.Triggers) instead.</para>
+            <para>More information, see github page.</para>
+            </summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.Awake">
+            <summary>Awake is called when the script instance is being loaded.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.FixedUpdate">
+            <summary>This function is called every fixed framerate frame, if the MonoBehaviour is enabled.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.LateUpdate">
+            <summary>LateUpdate is called every frame, if the Behaviour is enabled.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnAnimatorIK(System.Int32)">
+            <summary>Callback for setting up animation IK (inverse kinematics).</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnAnimatorMove">
+            <summary>Callback for processing animation movements for modifying root motion.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnApplicationFocus(System.Boolean)">
+            <summary>Sent to all game objects when the player gets or loses focus.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnApplicationPause(System.Boolean)">
+            <summary>Sent to all game objects when the player pauses.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnApplicationQuit">
+            <summary>Sent to all game objects before the application is quit.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnAudioFilterRead(System.Single[],System.Int32)">
+            <summary>If OnAudioFilterRead is implemented, Unity will insert a custom filter into the audio DSP chain.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnBecameInvisible">
+            <summary>OnBecameInvisible is called when the renderer is no longer visible by any camera.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnBecameVisible">
+            <summary>OnBecameVisible is called when the renderer became visible by any camera.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnCollisionEnter(UnityEngine.Collision)">
+            <summary>OnCollisionEnter is called when this collider/rigidbody has begun touching another rigidbody/collider.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnCollisionEnter2D(UnityEngine.Collision2D)">
+            <summary>Sent when an incoming collider makes contact with this object's collider (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnCollisionExit(UnityEngine.Collision)">
+            <summary>OnCollisionExit is called when this collider/rigidbody has stopped touching another rigidbody/collider.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnCollisionExit2D(UnityEngine.Collision2D)">
+            <summary>Sent when a collider on another object stops touching this object's collider (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnCollisionStay(UnityEngine.Collision)">
+            <summary>OnCollisionStay is called once per frame for every collider/rigidbody that is touching rigidbody/collider.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnCollisionStay2D(UnityEngine.Collision2D)">
+            <summary>Sent each frame where a collider on another object is touching this object's collider (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnConnectedToServer">
+            <summary>Called on the client when you have successfully connected to a server.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnControllerColliderHit(UnityEngine.ControllerColliderHit)">
+            <summary>OnControllerColliderHit is called when the controller hits a collider while performing a Move.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnDestroy">
+            <summary>This function is called when the MonoBehaviour will be destroyed.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnDisable">
+            <summary>This function is called when the behaviour becomes disabled () or inactive.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnDrawGizmos">
+            <summary>Implement OnDrawGizmos if you want to draw gizmos that are also pickable and always drawn.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnDrawGizmosSelected">
+            <summary>Implement this OnDrawGizmosSelected if you want to draw gizmos only if the object is selected.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnEnable">
+            <summary>This function is called when the object becomes enabled and active.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnJointBreak(System.Single)">
+            <summary>Called when a joint attached to the same game object broke.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnMouseDown">
+            <summary>OnMouseDown is called when the user has pressed the mouse button while over the GUIElement or Collider.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnMouseDrag">
+            <summary>OnMouseDrag is called when the user has clicked on a GUIElement or Collider and is still holding down the mouse.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnMouseEnter">
+            <summary>OnMouseEnter is called when the mouse entered the GUIElement or Collider.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnMouseExit">
+            <summary>OnMouseExit is called when the mouse is not any longer over the GUIElement or Collider.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnMouseOver">
+            <summary>OnMouseOver is called every frame while the mouse is over the GUIElement or Collider.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnMouseUp">
+            <summary>OnMouseUp is called when the user has released the mouse button.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnMouseUpAsButton">
+            <summary>OnMouseUpAsButton is only called when the mouse is released over the same GUIElement or Collider as it was pressed.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnParticleCollision(UnityEngine.GameObject)">
+            <summary>OnParticleCollision is called when a particle hits a collider.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnPostRender">
+            <summary>OnPostRender is called after a camera finished rendering the scene.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnPreCull">
+            <summary>OnPreCull is called before a camera culls the scene.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnPreRender">
+            <summary>OnPreRender is called before a camera starts rendering the scene.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnRenderImage(UnityEngine.RenderTexture,UnityEngine.RenderTexture)">
+            <summary>OnRenderImage is called after all rendering is complete to render image.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnRenderObject">
+            <summary>OnRenderObject is called after camera has rendered the scene.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnServerInitialized">
+            <summary>Called on the server whenever a Network. InitializeServer was invoked and has completed.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnTriggerEnter(UnityEngine.Collider)">
+            <summary>OnTriggerEnter is called when the Collider other enters the trigger.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnTriggerEnter2D(UnityEngine.Collider2D)">
+            <summary>Sent when another object enters a trigger collider attached to this object (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnTriggerExit(UnityEngine.Collider)">
+            <summary>OnTriggerExit is called when the Collider other has stopped touching the trigger.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnTriggerExit2D(UnityEngine.Collider2D)">
+            <summary>Sent when another object leaves a trigger collider attached to this object (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnTriggerStay(UnityEngine.Collider)">
+            <summary>OnTriggerStay is called once per frame for every Collider other that is touching the trigger.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnTriggerStay2D(UnityEngine.Collider2D)">
+            <summary>Sent each frame where another object is within a trigger collider attached to this object (2D physics only).</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnValidate">
+            <summary>This function is called when the script is loaded or a value is changed in the inspector (Called in the editor only).</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnWillRenderObject">
+            <summary>OnWillRenderObject is called once for each camera if the object is visible.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.Reset">
+            <summary>Reset to default values.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.Start">
+            <summary>Start is called on the frame when a script is enabled just before any of the Update methods is called the first time.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.Update">
+            <summary>Update is called every frame, if the MonoBehaviour is enabled.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnDisconnectedFromServer(UnityEngine.NetworkDisconnection)">
+            <summary>Called on the client when the connection was lost or you disconnected from the server.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnFailedToConnect(UnityEngine.NetworkConnectionError)">
+            <summary>Called on the client when a connection attempt fails for some reason.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnFailedToConnectToMasterServer(UnityEngine.NetworkConnectionError)">
+            <summary>Called on clients or servers when there is a problem connecting to the MasterServer.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnMasterServerEvent(UnityEngine.MasterServerEvent)">
+            <summary>Called on clients or servers when reporting events from the MasterServer.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnNetworkInstantiate(UnityEngine.NetworkMessageInfo)">
+            <summary>Called on objects which have been network instantiated with Network Instantiate.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnPlayerConnected(UnityEngine.NetworkPlayer)">
+            <summary>Called on the server whenever a new player has successfully connected.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnPlayerDisconnected(UnityEngine.NetworkPlayer)">
+            <summary>Called on the server whenever a player disconnected from the server.</summary>
+        </member>
+        <member name="M:UniRx.TypedMonoBehaviour.OnSerializeNetworkView(UnityEngine.BitStream,UnityEngine.NetworkMessageInfo)">
+            <summary>Used to customize synchronization of variables in a script watched by a network view.</summary>
+        </member>
+        <member name="M:UniRx.UnityUIComponentExtensions.OnClickAsObservable(UnityEngine.UI.Button)">
+            <summary>Observe onClick event.</summary>
+        </member>
+        <member name="M:UniRx.UnityUIComponentExtensions.OnValueChangedAsObservable(UnityEngine.UI.Toggle)">
+            <summary>Observe onValueChanged with current `isOn` value on subscribe.</summary>
+        </member>
+        <member name="M:UniRx.UnityUIComponentExtensions.OnValueChangedAsObservable(UnityEngine.UI.Scrollbar)">
+            <summary>Observe onValueChanged with current `value` on subscribe.</summary>
+        </member>
+        <member name="M:UniRx.UnityUIComponentExtensions.OnValueChangedAsObservable(UnityEngine.UI.ScrollRect)">
+            <summary>Observe onValueChanged with current `normalizedPosition` value on subscribe.</summary>
+        </member>
+        <member name="M:UniRx.UnityUIComponentExtensions.OnValueChangedAsObservable(UnityEngine.UI.Slider)">
+            <summary>Observe onValueChanged with current `value` on subscribe.</summary>
+        </member>
+        <member name="M:UniRx.UnityUIComponentExtensions.OnEndEditAsObservable(UnityEngine.UI.InputField)">
+            <summary>Observe onEndEdit(Submit) event.</summary>
+        </member>
+        <member name="M:UniRx.UnityUIComponentExtensions.OnValueChangeAsObservable(UnityEngine.UI.InputField)">
+            <summary>Observe onValueChange with current `text` value on subscribe.</summary>
+        </member>
+        <member name="M:UniRx.UnityUIComponentExtensions.OnValueChangedAsObservable(UnityEngine.UI.InputField)">
+            <summary>Observe onValueChanged with current `text` value on subscribe.</summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,5 @@
+C:\work\UnityBootstrapV2\UnityBootstrapV2.Interfaces\obj\Debug\UnityBootstrapV2.Interfaces.csprojResolveAssemblyReference.cache
+C:\work\UnityBootstrapV2\UnityBootstrapV2\Assets\Plugins\UnityBootstrapV2.Interfaces.dll
+C:\work\UnityBootstrapV2\UnityBootstrapV2\Assets\Plugins\UnityBootstrapV2.Interfaces.pdb
+C:\work\UnityBootstrapV2\UnityBootstrapV2.Interfaces\obj\Debug\UnityBootstrapV2.Interfaces.dll
+C:\work\UnityBootstrapV2\UnityBootstrapV2.Interfaces\obj\Debug\UnityBootstrapV2.Interfaces.pdb
