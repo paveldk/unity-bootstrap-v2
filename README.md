@@ -1,4 +1,4 @@
-After Unity's best practices for code architecture didn't convince me to be of any real use I decided to try and fix as more problems Unity have as possible with a couple of simple steps.
+After Unity's best practices for code architecture didn't convince me to be of any real use I decided to try and fix as many problems Unity have as possible with a couple of simple steps.
 You can try and implement those in any existing projects. 
 
 ### Steps for better Unity3D
